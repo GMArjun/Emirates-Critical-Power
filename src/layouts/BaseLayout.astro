@@ -11,6 +11,8 @@ const {
   title = "UPS Installation Dubai | UPS Installation Support UAE — Emirates Critical Power LLC",
   description = "Looking for UPS installation in Dubai? Emirates Critical Power LLC provides UPS installation support, supply, testing, commissioning, AMC and battery replacement across Dubai and the UAE. 24/7 emergency UPS installation & repair. Free quote on WhatsApp.",
 } = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, site.url).href;
 ---
 
 <!DOCTYPE html>
@@ -27,11 +29,12 @@ const {
       name="keywords"
       content="UPS Installation Dubai, UPS Installation Support Dubai, UPS Installation UAE, UPS Installation Company Dubai, UPS Installation Services Dubai, Best UPS Installation Dubai, UPS Installer Dubai, UPS Installation Near Me, UPS Installation and Commissioning Dubai, UPS Installation Contractor UAE, UPS Setup Dubai, UPS Fitting Dubai, UPS Service Dubai, UPS Maintenance UAE, UPS Repair Dubai, UPS Battery Replacement Dubai, UPS Battery Installation UAE, UPS AMC Dubai, Critical Power Solutions UAE, Modular UPS UAE, N+1 UPS Installation, Online UPS Supplier UAE, Data Center UPS Dubai, Battery Monitoring System UAE, VRLA Battery Replacement Dubai, Lithium Battery Installation UAE, UPS Commissioning UAE, UPS Testing Dubai, UPS Engineer Dubai, UPS Company UAE"
     />
-    <meta property="og:title" content="UPS Installation Dubai | Emirates Critical Power LLC — UAE's Trusted UPS Installation Support" />
-    <meta property="og:description" content="UPS Installation Support • Supply • Commissioning • AMC • Battery Replacement • Emergency UPS Support across Dubai and the UAE." />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
     <meta name="robots" content="index, follow" />
-    <link rel="canonical" href={`${site.url}/`} />
+    <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -43,6 +46,7 @@ const {
       "@context": "https://schema.org",
       "@type": "ElectricianOrElectricalContractor",
       name: site.name,
+      url: site.url,
       description: "UPS installation, maintenance, AMC and battery replacement specialists in Dubai, UAE.",
       areaServed: "United Arab Emirates",
       address: {

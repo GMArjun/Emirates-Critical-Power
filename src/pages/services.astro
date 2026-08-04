@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppFloat from '../components/WhatsAppFloat.astro';
+import { services } from '../data/services';
+import { site } from '../data/site';
+---
+
+<BaseLayout
+  title={`UPS Services Dubai | Installation, AMC & Batteries — ${site.shortName}`}
+  description="UPS supply, installation, maintenance, AMC, battery replacement, BMS and commissioning in Dubai and across the UAE. Independent multi-brand UPS engineering from Emirates Critical Power LLC."
+>
+  <Header />
+
+  <section class="bg-navy-deep py-20 text-white">
+    <div class="mx-auto max-w-[800px] px-6 text-center">
+      <div class="mb-3.5 flex items-center justify-center gap-2.5 font-mono text-xs tracking-[0.14em] text-orange uppercase before:inline-block before:h-0.5 before:w-[22px] before:bg-orange">
+        Our services
+      </div>
+      <h1 class="text-[clamp(32px,4vw,48px)]">Full lifecycle UPS &amp; battery services</h1>
+      <p class="mt-4 text-[16px] text-white/75">
+        Supply · Installation · Commissioning · AMC · Battery replacement · 24/7 emergency support
+      </p>
+    </div>
+  </section>
+
+  <section class="bg-white py-[88px]">
+    <div class="mx-auto max-w-[1200px] px-6">
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          services.map((service) => (
+            <div class="relative rounded-xl border border-line bg-white px-[26px] py-[30px] shadow-[0_2px_10px_rgba(0,51,102,0.05)]">
+              <span class="mb-3.5 block font-mono text-xs text-orange">{service.num}</span>
+              <h2 class="mb-2.5 text-[19px] text-navy">{service.title}</h2>
+              <p class="mb-4 text-sm text-steel">{service.desc}</p>
+              <ul class="list-none text-[13.5px] text-navy-deep">
+                {service.items.map((item, i) => (
+                  <li class={`py-[5px] ${i === 0 ? '' : 'border-t border-dashed border-line'}`}>{item}</li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="mt-16 rounded-2xl bg-linear-to-br from-navy to-navy-deep p-10 text-center text-white">
+        <h2 class="mb-3 text-[24px]">Need a quote for your facility?</h2>
+        <p class="mx-auto mb-6 max-w-[520px] text-[15px] text-white/80">
+          Tell us your UPS capacity, site location and whether you need supply, installation, AMC or emergency support.
+        </p>
+        <div class="flex flex-wrap justify-center gap-3">
+          <a
+            href="/#contact"
+            class="inline-flex items-center justify-center rounded-md bg-orange px-[22px] py-[11px] text-sm font-semibold text-white shadow-(--shadow-orange) hover:bg-orange-hover"
+          >
+            Request free quote
+          </a>
+          <a
+            href={site.whatsapp}
+            class="inline-flex items-center justify-center rounded-md bg-white px-[22px] py-[11px] text-sm font-semibold text-navy"
+          >
+            WhatsApp us
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+  <WhatsAppFloat />
+</BaseLayout>
