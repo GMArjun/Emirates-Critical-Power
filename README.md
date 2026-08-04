@@ -2,7 +2,7 @@
 
 Marketing site for Emirates Critical Power LLC — UPS installation, maintenance, AMC and battery services in Dubai / UAE.
 
-Built with [Astro](https://astro.build) for a static, fast site that can grow into more pages later.
+Built with [Astro](https://astro.build) + [Tailwind CSS v4](https://tailwindcss.com) for a static, fast site that can grow into more pages later.
 
 ## Commands
 

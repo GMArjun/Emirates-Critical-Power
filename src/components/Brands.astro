@@ -4,17 +4,27 @@ import { brands } from '../data/brands';
 const track = [...brands, ...brands];
 ---
 
-<section id="brands">
-  <div class="wrap">
-    <div class="section-head center">
-      <div class="eyebrow" style="justify-content:center;">Multi-brand expertise</div>
-      <h2>We service every major UPS brand</h2>
+<section id="brands" class="bg-white py-[88px]">
+  <div class="mx-auto max-w-[1200px] px-6">
+    <div class="mx-auto mb-12 max-w-[640px] text-center">
+      <div class="mb-3.5 flex items-center justify-center gap-2.5 font-mono text-xs tracking-[0.14em] text-orange uppercase before:inline-block before:h-0.5 before:w-[22px] before:bg-orange">
+        Multi-brand expertise
+      </div>
+      <h2 class="text-[clamp(26px,3.4vw,40px)] text-navy">We service every major UPS brand</h2>
     </div>
   </div>
-  <div class="brand-marquee">
-    <div class="brand-track">
-      {track.map((brand) => <div class="brand-item">{brand}</div>)}
+  <div class="relative overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_8%,black_92%,transparent)]">
+    <div class="animate-brand-scroll flex w-max hover:[animation-play-state:paused]">
+      {
+        track.map((brand) => (
+          <div class="whitespace-nowrap border-r border-line px-[30px] py-[18px] font-display text-[15px] font-semibold text-steel">
+            {brand}
+          </div>
+        ))
+      }
     </div>
   </div>
-  <p class="brand-note">We are an independent UPS engineering company, capable of servicing and maintaining multiple manufacturers' equipment without bias.</p>
+  <p class="mx-auto mt-[22px] max-w-[560px] text-center text-[13.5px] text-steel italic">
+    We are an independent UPS engineering company, capable of servicing and maintaining multiple manufacturers' equipment without bias.
+  </p>
 </section>

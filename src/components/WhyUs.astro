@@ -11,18 +11,20 @@ const reasons = [
 ];
 ---
 
-<section class="bg-grey">
-  <div class="wrap">
-    <div class="section-head center">
-      <div class="eyebrow" style="justify-content:center;">Why Emirates Critical Power</div>
-      <h2>Built for facilities that can't afford downtime</h2>
+<section class="bg-grey py-[88px]">
+  <div class="mx-auto max-w-[1200px] px-6">
+    <div class="mx-auto mb-12 max-w-[640px] text-center">
+      <div class="mb-3.5 flex items-center justify-center gap-2.5 font-mono text-xs tracking-[0.14em] text-orange uppercase before:inline-block before:h-0.5 before:w-[22px] before:bg-orange">
+        Why Emirates Critical Power
+      </div>
+      <h2 class="text-[clamp(26px,3.4vw,40px)] text-navy">Built for facilities that can't afford downtime</h2>
     </div>
-    <div class="why-grid">
+    <div class="grid gap-[22px] sm:grid-cols-2 lg:grid-cols-4">
       {
         reasons.map((item) => (
-          <div class="why-item">
-            <h4>{item.title}</h4>
-            <p>{item.body}</p>
+          <div class="border-t-2 border-orange px-1 py-6">
+            <h4 class="mb-1.5 text-base text-navy">{item.title}</h4>
+            <p class="text-[13.5px] text-steel">{item.body}</p>
           </div>
         ))
       }

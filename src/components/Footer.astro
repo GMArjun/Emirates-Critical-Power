@@ -2,46 +2,52 @@
 import { site } from '../data/site';
 ---
 
-<footer>
-  <div class="wrap">
-    <div class="footer-grid">
+<footer class="bg-navy-deep px-0 pt-14 pb-6 text-white/70">
+  <div class="mx-auto max-w-[1200px] px-6">
+    <div class="mb-10 grid gap-10 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr]">
       <div>
-        <div class="logo" style="color:white;margin-bottom:14px;">
-          <img class="logo-mark" src="/logo.png" alt={`${site.name} logo`} width="44" height="44" style="border-radius:6px;" />
+        <div class="mb-3.5 flex items-center gap-2.5 font-display text-lg font-bold text-white">
+          <img
+            class="h-11 w-11 shrink-0 rounded-md object-contain"
+            src="/logo.png"
+            alt={`${site.name} logo`}
+            width="44"
+            height="44"
+          />
           {site.shortName}
         </div>
-        <p style="font-size:13.5px;max-width:280px;">
+        <p class="max-w-[280px] text-[13.5px]">
           Independent UPS installation, maintenance and battery specialists serving Dubai and the UAE, 24/7.
         </p>
       </div>
       <div>
-        <h4>Services</h4>
-        <ul>
-          <li><a href="#services">UPS Supply</a></li>
-          <li><a href="#services">Installation</a></li>
-          <li><a href="#services">Maintenance &amp; AMC</a></li>
-          <li><a href="#battery">Battery Replacement</a></li>
+        <h4 class="mb-4 font-display text-sm text-white">Services</h4>
+        <ul class="list-none text-[13.5px]">
+          <li class="mb-[9px]"><a class="hover:text-orange" href="#services">UPS Supply</a></li>
+          <li class="mb-[9px]"><a class="hover:text-orange" href="#services">Installation</a></li>
+          <li class="mb-[9px]"><a class="hover:text-orange" href="#services">Maintenance &amp; AMC</a></li>
+          <li class="mb-[9px]"><a class="hover:text-orange" href="#battery">Battery Replacement</a></li>
         </ul>
       </div>
       <div>
-        <h4>Company</h4>
-        <ul>
-          <li><a href="#about">About Us</a></li>
-          <li><a href="#brands">Brands We Support</a></li>
-          <li><a href="#industries">Industries</a></li>
-          <li><a href="#faq">FAQ</a></li>
+        <h4 class="mb-4 font-display text-sm text-white">Company</h4>
+        <ul class="list-none text-[13.5px]">
+          <li class="mb-[9px]"><a class="hover:text-orange" href="#about">About Us</a></li>
+          <li class="mb-[9px]"><a class="hover:text-orange" href="#brands">Brands We Support</a></li>
+          <li class="mb-[9px]"><a class="hover:text-orange" href="#industries">Industries</a></li>
+          <li class="mb-[9px]"><a class="hover:text-orange" href="#faq">FAQ</a></li>
         </ul>
       </div>
       <div>
-        <h4>Contact</h4>
-        <ul>
-          <li>{site.addressShort}</li>
-          <li>{site.phoneDisplay}</li>
-          <li>{site.email}</li>
+        <h4 class="mb-4 font-display text-sm text-white">Contact</h4>
+        <ul class="list-none text-[13.5px]">
+          <li class="mb-[9px]">{site.addressShort}</li>
+          <li class="mb-[9px]">{site.phoneDisplay}</li>
+          <li class="mb-[9px]">{site.email}</li>
         </ul>
       </div>
     </div>
-    <div class="footer-bottom">
+    <div class="flex flex-wrap justify-between gap-2.5 border-t border-white/10 pt-5 text-[12.5px]">
       <span>© {new Date().getFullYear()} {site.name}. All rights reserved.</span>
       <span>UPS Installation Dubai · UPS Maintenance UAE · UPS AMC · Battery Replacement</span>
     </div>

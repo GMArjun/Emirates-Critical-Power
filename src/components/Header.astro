@@ -1,25 +1,36 @@
 ---
 import { site } from '../data/site';
+
+const btn =
+  'inline-flex items-center justify-center gap-2 rounded-md px-[22px] py-[11px] text-sm font-semibold whitespace-nowrap transition-all duration-200';
+const btnOrange = `${btn} bg-orange text-white shadow-(--shadow-orange) hover:bg-orange-hover hover:-translate-y-px hover:shadow-(--shadow-orange-lg)`;
+const btnOutline = `${btn} border-[1.5px] border-navy bg-transparent text-navy hover:bg-navy hover:text-white px-4 py-2.5`;
 ---
 
-<header>
-  <nav>
-    <a href="#top" class="logo">
-      <img class="logo-mark" src="/logo.png" alt={`${site.name} logo`} width="44" height="44" style="border-radius:6px;" />
+<header class="sticky top-0 z-100 border-b border-line bg-white/92 backdrop-blur-[10px]">
+  <nav class="mx-auto flex max-w-[1200px] items-center justify-between px-6 py-4">
+    <a href="#top" class="flex items-center gap-2.5 font-display text-lg font-bold text-navy">
+      <img
+        class="h-11 w-11 shrink-0 rounded-md object-contain"
+        src="/logo.png"
+        alt={`${site.name} logo`}
+        width="44"
+        height="44"
+      />
       {site.shortName}
     </a>
-    <div class="nav-links">
-      <a href="#services">Services</a>
-      <a href="#battery">Batteries</a>
-      <a href="#industries">Industries</a>
-      <a href="#brands">Brands</a>
-      <a href="#faq">FAQ</a>
-      <a href="#contact">Contact</a>
+    <div class="hidden gap-7 text-sm font-medium md:flex">
+      <a href="#services" class="py-1 text-navy hover:text-orange">Services</a>
+      <a href="#battery" class="py-1 text-navy hover:text-orange">Batteries</a>
+      <a href="#industries" class="py-1 text-navy hover:text-orange">Industries</a>
+      <a href="#brands" class="py-1 text-navy hover:text-orange">Brands</a>
+      <a href="#faq" class="py-1 text-navy hover:text-orange">FAQ</a>
+      <a href="#contact" class="py-1 text-navy hover:text-orange">Contact</a>
     </div>
-    <div class="nav-cta">
-      <a href={`tel:${site.phone}`} class="btn btn-outline" style="padding:10px 16px;">Call Now</a>
-      <a href={site.whatsapp} class="btn btn-orange">WhatsApp</a>
+    <div class="hidden items-center gap-3 sm:flex">
+      <a href={`tel:${site.phone}`} class={btnOutline}>Call Now</a>
+      <a href={site.whatsapp} class={btnOrange}>WhatsApp</a>
     </div>
-    <button class="menu-toggle" aria-label="Menu" type="button">☰</button>
+    <button class="bg-transparent text-2xl text-navy md:hidden" aria-label="Menu" type="button">☰</button>
   </nav>
 </header>

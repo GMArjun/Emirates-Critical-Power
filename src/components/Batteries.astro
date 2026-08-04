@@ -30,22 +30,29 @@ const chemistries = [
 ];
 ---
 
-<section id="battery">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow">Battery solutions</div>
-      <h2>Spec-matched battery banks for every UPS</h2>
-      <p>We size, supply and install the right chemistry for your load profile, ambient conditions and budget.</p>
+<section id="battery" class="bg-white py-[88px]">
+  <div class="mx-auto max-w-[1200px] px-6">
+    <div class="mb-12 max-w-[640px]">
+      <div class="mb-3.5 flex items-center gap-2.5 font-mono text-xs tracking-[0.14em] text-orange uppercase before:inline-block before:h-0.5 before:w-[22px] before:bg-orange">
+        Battery solutions
+      </div>
+      <h2 class="text-[clamp(26px,3.4vw,40px)] text-navy">Spec-matched battery banks for every UPS</h2>
+      <p class="mt-3 text-base text-steel">
+        We size, supply and install the right chemistry for your load profile, ambient conditions and budget.
+      </p>
     </div>
-    <div class="spec-grid">
+    <div class="grid gap-[22px] md:grid-cols-3">
       {
         chemistries.map((chem) => (
-          <div class="spec-card">
-            <h4>{chem.title}</h4>
+          <div
+            class="rounded-xl bg-navy-deep p-[26px] text-white"
+            style="background-image: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px); background-size: 20px 20px;"
+          >
+            <h4 class="mb-3.5 font-mono text-[15px] tracking-[0.04em] text-orange">{chem.title}</h4>
             {chem.rows.map((row, i) => (
-              <div class="spec-row" style={i === chem.rows.length - 1 ? 'border-bottom:none;' : undefined}>
+              <div class={`flex justify-between py-[7px] text-[13px] ${i === chem.rows.length - 1 ? '' : 'border-b border-white/10'}`}>
                 <span>{row[0]}</span>
-                <span>{row[1]}</span>
+                <span class="font-mono text-white/60">{row[1]}</span>
               </div>
             ))}
           </div>

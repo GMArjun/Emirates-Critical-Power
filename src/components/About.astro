@@ -25,29 +25,56 @@ const industries = [
 ];
 ---
 
-<section id="about">
-  <div class="wrap about-grid">
+<section id="about" class="bg-white py-[88px]">
+  <div class="mx-auto grid max-w-[1200px] items-start gap-[60px] px-6 md:grid-cols-2">
     <div>
-      <div class="eyebrow">About the company</div>
-      <h2>Independent UPS engineering, built for critical facilities</h2>
-      <p style="color:var(--steel);margin-top:14px;font-size:15.5px;">
+      <div class="mb-3.5 flex items-center gap-2.5 font-mono text-xs tracking-[0.14em] text-orange uppercase before:inline-block before:h-0.5 before:w-[22px] before:bg-orange">
+        About the company
+      </div>
+      <h2 class="text-[clamp(26px,3.4vw,40px)] text-navy">Independent UPS engineering, built for critical facilities</h2>
+      <p class="mt-3.5 text-[15.5px] text-steel">
         Emirates Critical Power LLC is a UAE-based engineering company specializing in complete UPS and battery solutions — from single-phase office UPS to modular, N+1 systems protecting data centers. We supply, install, commission and maintain UPS across the Emirates, and we service multiple brands rather than pushing a single manufacturer's agenda. For export customers, we also arrange supply and on-site installation of UPS and battery systems outside the UAE — get in touch with your project location and load requirements.
       </p>
-      <ul class="about-list">
-        {capabilities.map((item) => <li>{item}</li>)}
+      <ul class="mt-5 grid list-none gap-x-[18px] gap-y-2.5 sm:grid-cols-2">
+        {
+          capabilities.map((item) => (
+            <li class="relative pl-5 text-[14.5px] text-navy-deep before:absolute before:top-2 before:left-0 before:h-[7px] before:w-[7px] before:rotate-45 before:rounded-px before:bg-orange before:content-['']">
+              {item}
+            </li>
+          ))
+        }
       </ul>
-      <div class="about-industries">
-        {industries.map((item) => <span class="chip">{item}</span>)}
+      <div class="mt-6 flex flex-wrap gap-2">
+        {
+          industries.map((item) => (
+            <span class="rounded-full border border-line px-3 py-1.5 font-mono text-xs text-steel">{item}</span>
+          ))
+        }
       </div>
     </div>
-    <div class="about-panel">
-      <h3>Why facilities choose an independent UPS partner</h3>
-      <div class="mono-line"><span>Brand lock-in</span><b>None</b></div>
-      <div class="mono-line"><span>Response time (Dubai)</span><b>&lt; 60 min</b></div>
-      <div class="mono-line"><span>Engineers</span><b>Certified</b></div>
-      <div class="mono-line"><span>Coverage</span><b>UAE-wide</b></div>
-      <div class="mono-line"><span>Batteries supplied</span><b>Genuine only</b></div>
-      <div class="mono-line" style="border-bottom:none;"><span>Support</span><b>24 / 7</b></div>
+    <div
+      class="relative overflow-hidden rounded-[14px] p-9 text-white after:absolute after:right-[-40px] after:bottom-[-40px] after:h-[180px] after:w-[180px] after:rounded-full after:bg-[radial-gradient(circle,rgba(255,107,0,0.25),transparent_70%)] after:content-['']"
+      style="background: linear-gradient(160deg, rgba(0,20,40,0.88), rgba(0,51,102,0.93)), url('https://images.unsplash.com/photo-1742899273038-67ff67477663?fm=jpg&q=70&w=900&auto=format&fit=crop') center/cover;"
+    >
+      <h3 class="relative mb-4 text-xl">Why facilities choose an independent UPS partner</h3>
+      <div class="relative flex justify-between border-b border-white/14 py-2.5 font-mono text-[13.5px]">
+        <span>Brand lock-in</span><b class="font-medium text-orange">None</b>
+      </div>
+      <div class="relative flex justify-between border-b border-white/14 py-2.5 font-mono text-[13.5px]">
+        <span>Response time (Dubai)</span><b class="font-medium text-orange">&lt; 60 min</b>
+      </div>
+      <div class="relative flex justify-between border-b border-white/14 py-2.5 font-mono text-[13.5px]">
+        <span>Engineers</span><b class="font-medium text-orange">Certified</b>
+      </div>
+      <div class="relative flex justify-between border-b border-white/14 py-2.5 font-mono text-[13.5px]">
+        <span>Coverage</span><b class="font-medium text-orange">UAE-wide</b>
+      </div>
+      <div class="relative flex justify-between border-b border-white/14 py-2.5 font-mono text-[13.5px]">
+        <span>Batteries supplied</span><b class="font-medium text-orange">Genuine only</b>
+      </div>
+      <div class="relative flex justify-between py-2.5 font-mono text-[13.5px]">
+        <span>Support</span><b class="font-medium text-orange">24 / 7</b>
+      </div>
     </div>
   </div>
 </section>

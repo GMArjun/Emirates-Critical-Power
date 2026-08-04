@@ -28,23 +28,31 @@ const images = [
 ];
 ---
 
-<section>
-  <div class="wrap">
-    <div class="section-head center">
-      <div class="eyebrow" style="justify-content:center;">Inside the work</div>
-      <h2>UPS rooms, battery banks &amp; commissioning</h2>
-      <p>A look at the environments we work in — from Dubai's skyline to the battery room floor.</p>
+<section class="bg-white py-[88px]">
+  <div class="mx-auto max-w-[1200px] px-6">
+    <div class="mx-auto mb-12 max-w-[640px] text-center">
+      <div class="mb-3.5 flex items-center justify-center gap-2.5 font-mono text-xs tracking-[0.14em] text-orange uppercase before:inline-block before:h-0.5 before:w-[22px] before:bg-orange">
+        Inside the work
+      </div>
+      <h2 class="text-[clamp(26px,3.4vw,40px)] text-navy">UPS rooms, battery banks &amp; commissioning</h2>
+      <p class="mt-3 text-base text-steel">
+        A look at the environments we work in — from Dubai's skyline to the battery room floor.
+      </p>
     </div>
-    <div class="gallery-grid">
+    <div class="grid grid-cols-2 gap-4 lg:grid-cols-5">
       {
         images.map((img) => (
-          <div class="gallery-item">
-            <img src={img.src} alt={img.alt} loading="lazy" />
-            <div class="cap">{img.cap}</div>
+          <div class="group relative aspect-4/5 overflow-hidden rounded-[10px] bg-navy-deep">
+            <img class="h-full w-full object-cover transition-transform duration-[350ms] group-hover:scale-105" src={img.src} alt={img.alt} loading="lazy" />
+            <div class="absolute inset-x-0 bottom-0 bg-linear-to-t from-navy-deep/92 to-transparent px-3.5 pt-3.5 pb-3 font-mono text-[12.5px] tracking-[0.02em] text-white">
+              {img.cap}
+            </div>
           </div>
         ))
       }
     </div>
-    <p class="gallery-credit">Photos courtesy of Unsplash contributors, free to use under the Unsplash License.</p>
+    <p class="mt-4 text-center text-[11.5px] text-steel">
+      Photos courtesy of Unsplash contributors, free to use under the Unsplash License.
+    </p>
   </div>
 </section>
