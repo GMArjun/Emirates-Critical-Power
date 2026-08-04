@@ -1,0 +1,7 @@
+# Cloudflare Workers static assets (serves the Astro build)
+name = "emirates-critical-power"
+compatibility_date = "2025-08-04"
+
+[assets]
+directory = "./dist"
+not_found_handling = "404-page"
