@@ -1,0 +1,61 @@
+---
+import '../styles/global.css';
+import { site } from '../data/site';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "UPS Installation Dubai | UPS Installation Support UAE — Emirates Critical Power LLC",
+  description = "Looking for UPS installation in Dubai? Emirates Critical Power LLC provides UPS installation support, supply, testing, commissioning, AMC and battery replacement across Dubai and the UAE. 24/7 emergency UPS installation & repair. Free quote on WhatsApp.",
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="color-scheme" content="light only" />
+    <meta name="supported-color-schemes" content="light" />
+    <meta name="theme-color" content="#003366" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta
+      name="keywords"
+      content="UPS Installation Dubai, UPS Installation Support Dubai, UPS Installation UAE, UPS Installation Company Dubai, UPS Installation Services Dubai, Best UPS Installation Dubai, UPS Installer Dubai, UPS Installation Near Me, UPS Installation and Commissioning Dubai, UPS Installation Contractor UAE, UPS Setup Dubai, UPS Fitting Dubai, UPS Service Dubai, UPS Maintenance UAE, UPS Repair Dubai, UPS Battery Replacement Dubai, UPS Battery Installation UAE, UPS AMC Dubai, Critical Power Solutions UAE, Modular UPS UAE, N+1 UPS Installation, Online UPS Supplier UAE, Data Center UPS Dubai, Battery Monitoring System UAE, VRLA Battery Replacement Dubai, Lithium Battery Installation UAE, UPS Commissioning UAE, UPS Testing Dubai, UPS Engineer Dubai, UPS Company UAE"
+    />
+    <meta property="og:title" content="UPS Installation Dubai | Emirates Critical Power LLC — UAE's Trusted UPS Installation Support" />
+    <meta property="og:description" content="UPS Installation Support • Supply • Commissioning • AMC • Battery Replacement • Emergency UPS Support across Dubai and the UAE." />
+    <meta property="og:type" content="website" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={`${site.url}/`} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "ElectricianOrElectricalContractor",
+      name: site.name,
+      description: "UPS installation, maintenance, AMC and battery replacement specialists in Dubai, UAE.",
+      areaServed: "United Arab Emirates",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "Al Fahidi, Al Ghubaiba",
+        addressLocality: "Dubai",
+        addressCountry: "AE",
+      },
+      telephone: site.phone,
+      email: site.email,
+    })} />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

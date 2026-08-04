@@ -1,0 +1,50 @@
+---
+const images = [
+  {
+    src: 'https://images.unsplash.com/photo-1742491387035-f658e8a2b7f4?fm=jpg&q=80&w=900&auto=format&fit=crop',
+    alt: 'Burj Khalifa and Dubai skyline at night',
+    cap: 'Dubai, UAE',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1682878355106-0c076b17f56d?fm=jpg&q=80&w=900&auto=format&fit=crop',
+    alt: 'Dubai Metro train against the city skyline',
+    cap: 'Dubai Metro corridor',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1695668548342-c0c1ad479aee?fm=jpg&q=80&w=900&auto=format&fit=crop',
+    alt: 'UPS and server racks in a data center',
+    cap: 'UPS & data center racks',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1742899273038-67ff67477663?fm=jpg&q=80&w=900&auto=format&fit=crop',
+    alt: 'Rows of a VRLA battery bank',
+    cap: 'VRLA battery bank',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1716062890647-60feae0609d0?fm=jpg&q=80&w=900&auto=format&fit=crop',
+    alt: 'A UPS uninterruptible power supply unit',
+    cap: 'UPS unit',
+  },
+];
+---
+
+<section>
+  <div class="wrap">
+    <div class="section-head center">
+      <div class="eyebrow" style="justify-content:center;">Inside the work</div>
+      <h2>UPS rooms, battery banks &amp; commissioning</h2>
+      <p>A look at the environments we work in — from Dubai's skyline to the battery room floor.</p>
+    </div>
+    <div class="gallery-grid">
+      {
+        images.map((img) => (
+          <div class="gallery-item">
+            <img src={img.src} alt={img.alt} loading="lazy" />
+            <div class="cap">{img.cap}</div>
+          </div>
+        ))
+      }
+    </div>
+    <p class="gallery-credit">Photos courtesy of Unsplash contributors, free to use under the Unsplash License.</p>
+  </div>
+</section>

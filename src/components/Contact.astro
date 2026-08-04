@@ -1,0 +1,93 @@
+---
+import { site } from '../data/site';
+---
+
+<section class="bg-grey" id="contact">
+  <div class="wrap contact-grid">
+    <div>
+      <div class="eyebrow">Get in touch</div>
+      <h2 style="font-size:28px;margin-bottom:22px;">Talk to a UPS engineer today</h2>
+
+      <div class="contact-info-item">
+        <div class="ic">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" aria-hidden="true">
+            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.68 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.9.32 1.85.55 2.81.68A2 2 0 0122 16.92z"></path>
+          </svg>
+        </div>
+        <div>
+          <h4>Call us anytime</h4>
+          <p>{site.phoneDisplay} · {site.address}</p>
+        </div>
+      </div>
+      <div class="contact-info-item">
+        <div class="ic">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" aria-hidden="true">
+            <path d="M4 4h16v16H4z"></path>
+            <path d="M4 4l8 9 8-9"></path>
+          </svg>
+        </div>
+        <div>
+          <h4>Email</h4>
+          <p>{site.email}</p>
+        </div>
+      </div>
+      <div class="contact-info-item">
+        <div class="ic">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" aria-hidden="true">
+            <path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0118 0z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+        </div>
+        <div>
+          <h4>Location</h4>
+          <p>{site.address}</p>
+        </div>
+      </div>
+      <div class="contact-info-item">
+        <div class="ic">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" aria-hidden="true">
+            <path d="M12 8v4l3 3"></path>
+            <circle cx="12" cy="12" r="9"></circle>
+          </svg>
+        </div>
+        <div>
+          <h4>Emergency support</h4>
+          <p>Available 24/7, every day of the year</p>
+        </div>
+      </div>
+
+      <a href={site.whatsapp} class="btn btn-orange btn-lg" style="margin-top:12px;width:100%;">WhatsApp Us Now</a>
+    </div>
+
+    <form id="quote-form">
+      <div class="form-row">
+        <input type="text" name="name" placeholder="Full name" required />
+        <input type="tel" name="phone" placeholder="Phone number" required />
+      </div>
+      <input type="email" name="email" placeholder="Email address" required />
+      <select name="service" required>
+        <option value="">Select service</option>
+        <option>UPS Supply</option>
+        <option>UPS Installation</option>
+        <option>UPS Maintenance / AMC</option>
+        <option>Battery Replacement</option>
+        <option>Emergency Repair</option>
+        <option>Other</option>
+      </select>
+      <textarea name="message" placeholder="Tell us about your UPS or facility..."></textarea>
+      <button type="submit" class="btn btn-orange" style="width:100%;padding:13px;">Request Free Quote</button>
+      <p class="form-msg" style="display:none;color:#2f8f5b;font-size:13.5px;margin-top:10px;">
+        Thanks — this is a demo form. Connect it to your CRM or email to go live.
+      </p>
+    </form>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById('quote-form') as HTMLFormElement | null;
+  form?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const msg = form.querySelector('.form-msg') as HTMLElement | null;
+    if (msg) msg.style.display = 'block';
+  });
+</script>

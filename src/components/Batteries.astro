@@ -1,0 +1,56 @@
+---
+const chemistries = [
+  {
+    title: '// VRLA BATTERIES',
+    rows: [
+      ['Typical design life', '3–5 years'],
+      ['Best for', 'Standard backup'],
+      ['Maintenance', 'Low'],
+      ['Cost', '$'],
+    ],
+  },
+  {
+    title: '// LITHIUM-ION',
+    rows: [
+      ['Typical design life', '8–10 years'],
+      ['Best for', 'Data centers, tight space'],
+      ['Maintenance', 'Very low'],
+      ['Cost', '$$$'],
+    ],
+  },
+  {
+    title: '// NICKEL CADMIUM',
+    rows: [
+      ['Typical design life', '15–20 years'],
+      ['Best for', 'Extreme temperature sites'],
+      ['Maintenance', 'Moderate'],
+      ['Cost', '$$'],
+    ],
+  },
+];
+---
+
+<section id="battery">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Battery solutions</div>
+      <h2>Spec-matched battery banks for every UPS</h2>
+      <p>We size, supply and install the right chemistry for your load profile, ambient conditions and budget.</p>
+    </div>
+    <div class="spec-grid">
+      {
+        chemistries.map((chem) => (
+          <div class="spec-card">
+            <h4>{chem.title}</h4>
+            {chem.rows.map((row, i) => (
+              <div class="spec-row" style={i === chem.rows.length - 1 ? 'border-bottom:none;' : undefined}>
+                <span>{row[0]}</span>
+                <span>{row[1]}</span>
+              </div>
+            ))}
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,31 @@
+---
+const reasons = [
+  { title: 'Certified engineers', body: 'Trained on multiple UPS platforms, not just one brand.' },
+  { title: 'Fast response', body: 'Rapid callout across Dubai and the wider UAE.' },
+  { title: '24/7 support', body: 'Emergency breakdown cover, every day of the year.' },
+  { title: 'Genuine batteries', body: 'Sourced batteries with full traceability and warranty.' },
+  { title: 'Turnkey delivery', body: 'Supply, install, commission and maintain — one contract.' },
+  { title: 'Transparent pricing', body: 'Clear scopes and quotes, no hidden call-out fees.' },
+  { title: 'AMC programs', body: 'Structured annual maintenance contracts, tiered to your risk.' },
+  { title: 'Documentation', body: 'FAT/SAT reports and health check records, kept on file.' },
+];
+---
+
+<section class="bg-grey">
+  <div class="wrap">
+    <div class="section-head center">
+      <div class="eyebrow" style="justify-content:center;">Why Emirates Critical Power</div>
+      <h2>Built for facilities that can't afford downtime</h2>
+    </div>
+    <div class="why-grid">
+      {
+        reasons.map((item) => (
+          <div class="why-item">
+            <h4>{item.title}</h4>
+            <p>{item.body}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

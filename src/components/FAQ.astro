@@ -1,0 +1,48 @@
+---
+import { faqs } from '../data/faqs';
+---
+
+<section id="faq">
+  <div class="wrap" style="max-width:820px;">
+    <div class="section-head center">
+      <div class="eyebrow" style="justify-content:center;">Frequently asked</div>
+      <h2>UPS &amp; battery questions, answered</h2>
+    </div>
+    <div id="faqList">
+      {
+        faqs.map(([question, answer]) => (
+          <div class="faq-item">
+            <div class="faq-q">
+              <span>{question}</span>
+              <span class="plus">+</span>
+            </div>
+            <div class="faq-a">
+              <p>{answer}</p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('.faq-item').forEach((item) => {
+    const q = item.querySelector('.faq-q');
+    const a = item.querySelector('.faq-a') as HTMLElement | null;
+    if (!q || !a) return;
+
+    q.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach((openItem) => {
+        openItem.classList.remove('open');
+        const openAnswer = openItem.querySelector('.faq-a') as HTMLElement | null;
+        if (openAnswer) openAnswer.style.maxHeight = '';
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        a.style.maxHeight = `${a.scrollHeight}px`;
+      }
+    });
+  });
+</script>

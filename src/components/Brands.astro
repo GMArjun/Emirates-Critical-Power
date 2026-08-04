@@ -1,0 +1,20 @@
+---
+import { brands } from '../data/brands';
+
+const track = [...brands, ...brands];
+---
+
+<section id="brands">
+  <div class="wrap">
+    <div class="section-head center">
+      <div class="eyebrow" style="justify-content:center;">Multi-brand expertise</div>
+      <h2>We service every major UPS brand</h2>
+    </div>
+  </div>
+  <div class="brand-marquee">
+    <div class="brand-track">
+      {track.map((brand) => <div class="brand-item">{brand}</div>)}
+    </div>
+  </div>
+  <p class="brand-note">We are an independent UPS engineering company, capable of servicing and maintaining multiple manufacturers' equipment without bias.</p>
+</section>

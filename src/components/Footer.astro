@@ -1,0 +1,49 @@
+---
+import { site } from '../data/site';
+---
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="logo" style="color:white;margin-bottom:14px;">
+          <img class="logo-mark" src="/logo.png" alt={`${site.name} logo`} width="44" height="44" style="border-radius:6px;" />
+          {site.shortName}
+        </div>
+        <p style="font-size:13.5px;max-width:280px;">
+          Independent UPS installation, maintenance and battery specialists serving Dubai and the UAE, 24/7.
+        </p>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">UPS Supply</a></li>
+          <li><a href="#services">Installation</a></li>
+          <li><a href="#services">Maintenance &amp; AMC</a></li>
+          <li><a href="#battery">Battery Replacement</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#brands">Brands We Support</a></li>
+          <li><a href="#industries">Industries</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li>{site.addressShort}</li>
+          <li>{site.phoneDisplay}</li>
+          <li>{site.email}</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© {new Date().getFullYear()} {site.name}. All rights reserved.</span>
+      <span>UPS Installation Dubai · UPS Maintenance UAE · UPS AMC · Battery Replacement</span>
+    </div>
+  </div>
+</footer>
