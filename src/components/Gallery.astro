@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+
 const images = [
   {
     src: 'https://images.unsplash.com/photo-1742491387035-f658e8a2b7f4?fm=jpg&q=80&w=900&auto=format&fit=crop',
@@ -30,7 +32,7 @@ const images = [
 
 <section class="bg-white py-[88px]">
   <div class="mx-auto max-w-[1200px] px-6">
-    <div class="mx-auto mb-12 max-w-[640px] text-center">
+    <div class="mx-auto mb-12 max-w-[640px] text-center" data-reveal>
       <div class="mb-3.5 flex items-center justify-center gap-2.5 font-mono text-xs tracking-[0.14em] text-orange uppercase before:inline-block before:h-0.5 before:w-[22px] before:bg-orange">
         Inside the work
       </div>
@@ -41,9 +43,17 @@ const images = [
     </div>
     <div class="grid grid-cols-2 gap-4 lg:grid-cols-5">
       {
-        images.map((img) => (
-          <div class="group relative aspect-4/5 overflow-hidden rounded-[10px] bg-navy-deep">
-            <img class="h-full w-full object-cover transition-transform duration-[350ms] group-hover:scale-105" src={img.src} alt={img.alt} loading="lazy" />
+        images.map((img, i) => (
+          <div class="group relative aspect-4/5 overflow-hidden rounded-[10px] bg-navy-deep" data-reveal style={`--i: ${i}`}>
+            <Image
+              class="img-fade h-full w-full object-cover transition-transform duration-[350ms] group-hover:scale-105"
+              src={img.src}
+              alt={img.alt}
+              width={640}
+              height={800}
+              loading="lazy"
+              onload="this.classList.add('is-loaded')"
+            />
             <div class="absolute inset-x-0 bottom-0 bg-linear-to-t from-navy-deep/92 to-transparent px-3.5 pt-3.5 pb-3 font-mono text-[12.5px] tracking-[0.02em] text-white">
               {img.cap}
             </div>
@@ -51,8 +61,5 @@ const images = [
         ))
       }
     </div>
-    <p class="mt-4 text-center text-[11.5px] text-steel">
-      Photos courtesy of Unsplash contributors, free to use under the Unsplash License.
-    </p>
   </div>
 </section>

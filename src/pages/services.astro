@@ -3,15 +3,26 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import WhatsAppFloat from '../components/WhatsAppFloat.astro';
-import { services } from '../data/services';
+import { services, engagementModels } from '../data/services';
 import { site } from '../data/site';
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: site.url },
+    { '@type': 'ListItem', position: 2, name: 'Services', item: `${site.url}/services` },
+  ],
+};
 ---
 
 <BaseLayout
-  title={`UPS Services Dubai | Installation, AMC & Batteries — ${site.shortName}`}
-  description="UPS supply, installation, maintenance, AMC, battery replacement, BMS and commissioning in Dubai and across the UAE. Independent multi-brand UPS engineering from Emirates Critical Power LLC."
+  title={`UPS Services Dubai | ${site.shortName}`}
+  description="UPS supply, installation, AMC, battery replacement, BMS and commissioning in Dubai and across the UAE. Independent, multi-brand UPS engineering."
 >
   <Header />
+
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumbSchema)} />
 
   <section class="bg-navy-deep py-20 text-white">
     <div class="mx-auto max-w-[800px] px-6 text-center">
@@ -29,8 +40,14 @@ import { site } from '../data/site';
     <div class="mx-auto max-w-[1200px] px-6">
       <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {
-          services.map((service) => (
-            <div class="relative rounded-xl border border-line bg-white px-[26px] py-[30px] shadow-[0_2px_10px_rgba(0,51,102,0.05)]">
+          services.map((service, i) => (
+            <div
+              class={`card-hover relative rounded-xl border border-line bg-white px-[26px] py-[30px] shadow-[0_2px_10px_rgba(0,51,102,0.05)] ${
+                services.length % 3 === 1 && i === services.length - 1 ? 'lg:col-start-2' : ''
+              }`}
+              data-reveal
+              style={`--i: ${i}`}
+            >
               <span class="mb-3.5 block font-mono text-xs text-orange">{service.num}</span>
               <h2 class="mb-2.5 text-[19px] text-navy">{service.title}</h2>
               <p class="mb-4 text-sm text-steel">{service.desc}</p>
@@ -44,7 +61,24 @@ import { site } from '../data/site';
         }
       </div>
 
-      <div class="mt-16 rounded-2xl bg-linear-to-br from-navy to-navy-deep p-10 text-center text-white">
+      <div class="mt-16" data-reveal>
+        <h2 class="mb-2 text-[22px] text-navy">Choose how you work with us</h2>
+        <p class="mb-7 max-w-[560px] text-sm text-steel">
+          Buy the full solution from us, or bring your own equipment and use our engineers for the technical work — same commissioning standard either way. Dealers and resellers get the same flexibility on our <a class="text-orange hover:underline" href="/partners">partner support page</a>.
+        </p>
+        <div class="grid gap-5 md:grid-cols-3">
+          {
+            engagementModels.map((model, i) => (
+              <div class="card-hover rounded-xl border border-line bg-white px-6 py-[26px] shadow-[0_2px_10px_rgba(0,51,102,0.05)]" data-reveal style={`--i: ${i}`}>
+                <h3 class="mb-2 text-[16px] text-navy">{model.title}</h3>
+                <p class="text-[13.5px] text-steel">{model.desc}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="mt-16 rounded-2xl bg-linear-to-br from-navy to-navy-deep p-10 text-center text-white" data-reveal>
         <h2 class="mb-3 text-[24px]">Need a quote for your facility?</h2>
         <p class="mx-auto mb-6 max-w-[520px] text-[15px] text-white/80">
           Tell us your UPS capacity, site location and whether you need supply, installation, AMC or emergency support.
@@ -52,13 +86,13 @@ import { site } from '../data/site';
         <div class="flex flex-wrap justify-center gap-3">
           <a
             href="/#contact"
-            class="inline-flex items-center justify-center rounded-md bg-orange px-[22px] py-[11px] text-sm font-semibold text-white shadow-(--shadow-orange) hover:bg-orange-hover"
+            class="btn-orange inline-flex items-center justify-center rounded-md px-[22px] py-[11px] text-sm font-semibold"
           >
             Request free quote
           </a>
           <a
             href={site.whatsapp}
-            class="inline-flex items-center justify-center rounded-md bg-white px-[22px] py-[11px] text-sm font-semibold text-navy"
+            class="btn-white inline-flex items-center justify-center rounded-md px-[22px] py-[11px] text-sm font-semibold"
           >
             WhatsApp us
           </a>

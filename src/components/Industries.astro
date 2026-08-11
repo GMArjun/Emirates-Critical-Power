@@ -17,7 +17,7 @@ const industries = [
 
 <section class="bg-grey py-[88px]" id="industries">
   <div class="mx-auto max-w-[1200px] px-6">
-    <div class="mx-auto mb-12 max-w-[640px] text-center">
+    <div class="mx-auto mb-12 max-w-[640px] text-center" data-reveal>
       <div class="mb-3.5 flex items-center justify-center gap-2.5 font-mono text-xs tracking-[0.14em] text-orange uppercase before:inline-block before:h-0.5 before:w-[22px] before:bg-orange">
         Who we serve
       </div>
@@ -25,8 +25,12 @@ const industries = [
     </div>
     <div class="grid grid-cols-2 overflow-hidden rounded-xl border border-line bg-line gap-px sm:grid-cols-2 lg:grid-cols-4">
       {
-        industries.map((item) => (
-          <div class="group bg-white px-[18px] py-[26px] text-center transition-colors hover:bg-navy hover:text-white">
+        industries.map((item, i) => (
+          <div
+            class="group bg-white px-[18px] py-[26px] text-center transition-colors hover:bg-navy hover:text-white"
+            data-reveal
+            style={`--i: ${i}`}
+          >
             <svg
               class="mx-auto mb-2.5 h-[26px] w-[26px] stroke-navy transition-colors group-hover:stroke-orange"
               viewBox="0 0 24 24"

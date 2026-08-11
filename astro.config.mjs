@@ -5,8 +5,11 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://emiratescriticalpower.com',
+  site: 'https://www.emiratescriticalpower.com',
   integrations: [sitemap()],
+  image: {
+    remotePatterns: [{ protocol: 'https', hostname: 'images.unsplash.com' }],
+  },
   vite: {
     plugins: [tailwindcss()],
   },

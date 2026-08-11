@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
-import Hero from '../components/Hero.astro';
+import Hero, { heroImageUrl } from '../components/Hero.astro';
 import About from '../components/About.astro';
 import Services from '../components/Services.astro';
 import Batteries from '../components/Batteries.astro';
@@ -16,7 +16,7 @@ import Footer from '../components/Footer.astro';
 import WhatsAppFloat from '../components/WhatsAppFloat.astro';
 ---
 
-<BaseLayout>
+<BaseLayout preloadImage={heroImageUrl}>
   <Header />
   <Hero />
   <About />

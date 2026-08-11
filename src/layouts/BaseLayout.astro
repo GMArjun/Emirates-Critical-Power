@@ -5,20 +5,26 @@ import { site } from '../data/site';
 interface Props {
   title?: string;
   description?: string;
+  noindex?: boolean;
+  preloadImage?: string;
 }
 
 const {
-  title = "UPS Installation Dubai | UPS Installation Support UAE — Emirates Critical Power LLC",
-  description = "Looking for UPS installation in Dubai? Emirates Critical Power LLC provides UPS installation support, supply, testing, commissioning, AMC and battery replacement across Dubai and the UAE. 24/7 emergency UPS installation & repair. Free quote on WhatsApp.",
+  title = 'UPS Installation Dubai | Emirates Critical Power',
+  description = 'UPS installation, supply, AMC, testing and battery replacement across Dubai & the UAE. 24/7 emergency support. Free quote on WhatsApp.',
+  noindex = false,
+  preloadImage,
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, site.url).href;
+const ogImage = new URL('/og-image.jpg', site.url).href;
 ---
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <script is:inline>document.documentElement.classList.add('js-reveal');</script>
     <meta name="color-scheme" content="light only" />
     <meta name="supported-color-schemes" content="light" />
     <meta name="theme-color" content="#003366" />
@@ -33,20 +39,30 @@ const canonical = new URL(Astro.url.pathname, site.url).href;
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonical} />
-    <meta name="robots" content="index, follow" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content={site.shortName} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow'} />
     <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
+    {preloadImage && <link rel="preload" as="image" href={preloadImage} fetchpriority="high" />}
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
-    <script type="application/ld+json" set:html={JSON.stringify({
+    <script type="application/ld+json" is:inline set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "ElectricianOrElectricalContractor",
       name: site.name,
       url: site.url,
+      image: ogImage,
       description: "UPS installation, maintenance, AMC and battery replacement specialists in Dubai, UAE.",
       areaServed: "United Arab Emirates",
       address: {
@@ -55,11 +71,44 @@ const canonical = new URL(Astro.url.pathname, site.url).href;
         addressLocality: "Dubai",
         addressCountry: "AE",
       },
+      geo: {
+        "@type": "GeoCoordinates",
+        latitude: 25.2631,
+        longitude: 55.2972,
+      },
       telephone: site.phone,
       email: site.email,
+      openingHoursSpecification: {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday",
+        ],
+        opens: "00:00",
+        closes: "23:59",
+      },
     })} />
   </head>
   <body>
     <slot />
+    <script>
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              revealObserver.unobserve(entry.target);
+            }
+          }
+        },
+        { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
+      );
+      document.querySelectorAll('[data-reveal]').forEach((el) => revealObserver.observe(el));
+    </script>
   </body>
 </html>

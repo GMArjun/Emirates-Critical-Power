@@ -4,7 +4,7 @@ import { services } from '../data/services';
 
 <section class="bg-grey py-[88px]" id="services">
   <div class="mx-auto max-w-[1200px] px-6">
-    <div class="mx-auto mb-12 max-w-[640px] text-center">
+    <div class="mx-auto mb-12 max-w-[640px] text-center" data-reveal>
       <div class="mb-3.5 flex items-center justify-center gap-2.5 font-mono text-xs tracking-[0.14em] text-orange uppercase before:inline-block before:h-0.5 before:w-[22px] before:bg-orange">
         What we do
       </div>
@@ -15,8 +15,14 @@ import { services } from '../data/services';
     </div>
     <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
       {
-        services.map((service) => (
-          <div class="relative rounded-xl border border-line bg-white px-[26px] py-[30px] shadow-[0_2px_10px_rgba(0,51,102,0.05)] transition-all duration-200 hover:-translate-y-1 hover:border-transparent hover:shadow-[0_20px_36px_rgba(0,51,102,0.14)]">
+        services.map((service, i) => (
+          <div
+            class={`card-hover relative rounded-xl border border-line bg-white px-[26px] py-[30px] shadow-[0_2px_10px_rgba(0,51,102,0.05)] ${
+              services.length % 3 === 1 && i === services.length - 1 ? 'lg:col-start-2' : ''
+            }`}
+            data-reveal
+            style={`--i: ${i}`}
+          >
             <span class="mb-3.5 block font-mono text-xs text-orange">{service.num}</span>
             <h3 class="mb-2.5 text-[19px] text-navy">{service.title}</h3>
             <p class="mb-4 text-sm text-steel">{service.desc}</p>
@@ -28,6 +34,9 @@ import { services } from '../data/services';
           </div>
         ))
       }
+    </div>
+    <div class="mt-10 text-center">
+      <a href="/services" class="font-semibold text-orange hover:underline">View all services &amp; how we work →</a>
     </div>
   </div>
 </section>

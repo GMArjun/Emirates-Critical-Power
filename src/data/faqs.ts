@@ -85,6 +85,18 @@ export const faqs: [string, string][] = [
   ],
   [
     'Do you install UPS systems outside the UAE?',
-    "Yes — for export customers we arrange supply and on-site installation of UPS and battery systems internationally. Share your country, load and site details and we'll scope the project.",
+    "Yes — for export customers we arrange supply and on-site installation of UPS and battery systems across the UAE and the wider MENA region. Share your country, load and site details and we'll scope the project.",
+  ],
+  [
+    'Can I supply my own UPS or batteries and have you install them?',
+    "Yes — you can purchase your UPS or batteries from any manufacturer, dealer or distributor, and our engineers handle installation, testing and commissioning to the same standard as a full turnkey job.",
+  ],
+  [
+    'Do you offer freelance UPS technician services?',
+    'Yes — for one-off projects, contractors and companies without an in-house UPS team, we provide project-based technical support (installation, battery replacement, testing, commissioning or troubleshooting) without a long-term contract. See our <a href="/partners">partner &amp; project support page</a> for details.',
+  ],
+  [
+    'Do you support UPS dealers and resellers?',
+    'Yes — we act as the on-ground installation and commissioning partner for dealers, distributors and resellers, including white-label support where agreed, so you can fulfill customer orders without maintaining your own installation team. See our <a href="/partners">dealer &amp; reseller support page</a>.',
   ],
 ];

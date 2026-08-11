@@ -86,7 +86,219 @@
     .animate-wa-pulse {
       animation: none;
     }
+
+    .mobile-nav,
+    .nav-sweep-path,
+    .mobile-nav-link,
+    .hamburger-bar {
+      transition: none !important;
+    }
+
+    html.js-reveal [data-reveal] {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+
+    header.site-header,
+    .card-hover {
+      transition: none !important;
+    }
+    .card-hover:hover {
+      transform: none !important;
+    }
+
+    .hero-wave-path {
+      animation: none !important;
+      stroke-dashoffset: 0 !important;
+    }
   }
+}
+
+@layer components {
+  .btn-orange {
+    background: var(--color-orange);
+    color: #fff;
+    box-shadow: var(--shadow-orange);
+  }
+  .btn-orange:hover {
+    background: var(--color-orange-hover);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-orange-lg);
+  }
+  .btn-orange:active {
+    transform: translateY(0);
+    box-shadow: var(--shadow-orange);
+  }
+
+  .btn-outline {
+    border: 1.5px solid var(--color-navy);
+    background: transparent;
+    color: var(--color-navy);
+  }
+  .btn-outline:hover {
+    background: var(--color-navy);
+    color: #fff;
+  }
+  .btn-outline:active {
+    transform: translateY(1px);
+  }
+
+  .btn-white {
+    background: #fff;
+    color: var(--color-navy);
+    box-shadow: 0 4px 14px rgb(0 0 0 / 0.12);
+  }
+  .btn-white:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 20px rgb(0 0 0 / 0.16);
+  }
+  .btn-white:active {
+    transform: translateY(0);
+  }
+
+  .btn-orange:focus-visible,
+  .btn-outline:focus-visible,
+  .btn-white:focus-visible {
+    outline: 2px solid var(--color-orange);
+    outline-offset: 2px;
+  }
+}
+
+/* Mobile nav — power-on takeover */
+.hamburger-bar {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--color-navy);
+  transition:
+    transform 0.25s ease,
+    opacity 0.2s ease,
+    top 0.25s ease;
+}
+.hamburger-bar:nth-child(1) {
+  top: 0;
+}
+.hamburger-bar:nth-child(2) {
+  top: 7px;
+}
+.hamburger-bar:nth-child(3) {
+  top: 14px;
+}
+.hamburger[aria-expanded='true'] .hamburger-bar:nth-child(1) {
+  top: 7px;
+  transform: rotate(45deg);
+}
+.hamburger[aria-expanded='true'] .hamburger-bar:nth-child(2) {
+  opacity: 0;
+}
+.hamburger[aria-expanded='true'] .hamburger-bar:nth-child(3) {
+  top: 7px;
+  transform: rotate(-45deg);
+}
+
+.mobile-nav {
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path 0.45s cubic-bezier(0.65, 0, 0.35, 1);
+}
+.mobile-nav.is-open {
+  clip-path: inset(0 0 0% 0);
+}
+
+.nav-sweep-path {
+  stroke-dasharray: 400;
+  stroke-dashoffset: 400;
+  transition: stroke-dashoffset 0.6s ease 0.2s;
+}
+.mobile-nav.is-open .nav-sweep-path {
+  stroke-dashoffset: 0;
+}
+
+.mobile-nav-link {
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease;
+  transition-delay: calc(var(--i, 0) * 60ms + 0.25s);
+}
+.mobile-nav.is-open .mobile-nav-link {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+body.nav-open {
+  overflow: hidden;
+}
+body.nav-open .wa-float {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Scroll-reveal — progressive enhancement, safe with no JS / crawlers */
+[data-reveal] {
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+  transition-delay: min(calc(var(--i, 0) * 70ms), 350ms);
+}
+html.js-reveal [data-reveal] {
+  opacity: 0;
+  transform: translateY(16px);
+}
+html.js-reveal [data-reveal].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Header scroll-shrink + card hover */
+header.site-header {
+  transition: padding 0.25s ease;
+}
+header.site-header.scrolled nav {
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
+}
+.card-hover {
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+  border-color: transparent;
+  box-shadow: 0 20px 36px rgb(0 51 102 / 0.14);
+}
+
+.img-fade {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.img-fade.is-loaded {
+  opacity: 1;
+}
+
+/* Hero waveform — one-time draw-in on load */
+.hero-wave-path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: hero-wave-draw 1.6s ease forwards 0.3s;
+}
+@keyframes hero-wave-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* FAQ open-item tint */
+.faq-q {
+  transition: background-color 0.2s ease;
+}
+.faq-item.open .faq-q {
+  background: var(--color-grey);
 }
 
 /* FAQ open state — driven by a tiny class toggle in script */

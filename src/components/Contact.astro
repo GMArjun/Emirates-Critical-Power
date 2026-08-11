@@ -2,100 +2,47 @@
 import { site } from '../data/site';
 
 const btn =
-  'inline-flex w-full items-center justify-center gap-2 rounded-lg px-[30px] py-[15px] text-[15px] font-semibold whitespace-nowrap transition-all duration-200';
-const btnOrange = `${btn} bg-orange text-white shadow-(--shadow-orange) hover:bg-orange-hover hover:-translate-y-px hover:shadow-(--shadow-orange-lg)`;
-const inputClass =
-  'mb-3.5 w-full rounded-[7px] border border-line bg-white px-3.5 py-3 font-sans text-sm focus:outline-2 focus:outline-orange focus:outline-offset-1';
+  'inline-flex w-full items-center justify-center gap-2 rounded-lg px-[30px] py-[15px] text-[15px] font-semibold whitespace-nowrap transition-all duration-200 sm:w-auto';
+const btnOrange = `${btn} btn-orange`;
+const btnWhite = `${btn} btn-white`;
+
+const details = [
+  { label: 'Call', value: site.phoneDisplay, href: `tel:${site.phone}` },
+  { label: 'Email', value: site.email, href: `mailto:${site.email}` },
+  { label: 'Location', value: site.address },
+  { label: 'Support', value: '24 / 7' },
+];
 ---
 
 <section class="bg-grey py-[88px]" id="contact">
-  <div class="mx-auto grid max-w-[1200px] gap-[50px] px-6 md:grid-cols-[1.1fr_1fr]">
-    <div>
-      <div class="mb-3.5 flex items-center gap-2.5 font-mono text-xs tracking-[0.14em] text-orange uppercase before:inline-block before:h-0.5 before:w-[22px] before:bg-orange">
+  <div class="mx-auto max-w-[800px] px-6" data-reveal>
+    <div class="relative overflow-hidden rounded-2xl bg-linear-to-br from-navy to-navy-deep p-10 text-center text-white after:absolute after:right-[-40px] after:bottom-[-40px] after:h-[180px] after:w-[180px] after:rounded-full after:bg-[radial-gradient(circle,rgba(255,107,0,0.25),transparent_70%)] after:content-[''] md:p-14">
+      <div class="relative mb-3.5 flex items-center justify-center gap-2.5 font-mono text-xs tracking-[0.14em] text-orange uppercase before:inline-block before:h-0.5 before:w-[22px] before:bg-orange">
         Get in touch
       </div>
-      <h2 class="mb-[22px] text-[28px] text-navy">Talk to a UPS engineer today</h2>
+      <h2 class="relative mb-8 text-[28px]">Talk to a UPS engineer today</h2>
 
-      <div class="mb-[22px] flex items-start gap-3.5">
-        <div class="flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-lg bg-navy">
-          <svg class="h-[18px] w-[18px]" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" aria-hidden="true">
-            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.68 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.9.32 1.85.55 2.81.68A2 2 0 0122 16.92z"></path>
-          </svg>
-        </div>
-        <div>
-          <h4 class="text-[14.5px] text-navy">Call us anytime</h4>
-          <p class="text-[13.5px] text-steel">{site.phoneDisplay} · {site.address}</p>
-        </div>
-      </div>
-      <div class="mb-[22px] flex items-start gap-3.5">
-        <div class="flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-lg bg-navy">
-          <svg class="h-[18px] w-[18px]" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" aria-hidden="true">
-            <path d="M4 4h16v16H4z"></path>
-            <path d="M4 4l8 9 8-9"></path>
-          </svg>
-        </div>
-        <div>
-          <h4 class="text-[14.5px] text-navy">Email</h4>
-          <p class="text-[13.5px] text-steel">{site.email}</p>
-        </div>
-      </div>
-      <div class="mb-[22px] flex items-start gap-3.5">
-        <div class="flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-lg bg-navy">
-          <svg class="h-[18px] w-[18px]" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" aria-hidden="true">
-            <path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0118 0z"></path>
-            <circle cx="12" cy="10" r="3"></circle>
-          </svg>
-        </div>
-        <div>
-          <h4 class="text-[14.5px] text-navy">Location</h4>
-          <p class="text-[13.5px] text-steel">{site.address}</p>
-        </div>
-      </div>
-      <div class="mb-[22px] flex items-start gap-3.5">
-        <div class="flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-lg bg-navy">
-          <svg class="h-[18px] w-[18px]" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" aria-hidden="true">
-            <path d="M12 8v4l3 3"></path>
-            <circle cx="12" cy="12" r="9"></circle>
-          </svg>
-        </div>
-        <div>
-          <h4 class="text-[14.5px] text-navy">Emergency support</h4>
-          <p class="text-[13.5px] text-steel">Available 24/7, every day of the year</p>
-        </div>
+      <div class="relative mx-auto mb-8 max-w-[480px] text-left">
+        {
+          details.map((item, i) => (
+            <div class={`flex justify-between gap-4 py-3 font-mono text-[13.5px] ${i === details.length - 1 ? '' : 'border-b border-white/14'}`}>
+              <span class="text-white/60">{item.label}</span>
+              {item.href ? (
+                <a href={item.href} class="font-medium text-orange hover:underline">
+                  {item.value}
+                </a>
+              ) : (
+                <span class="font-medium text-orange">{item.value}</span>
+              )}
+            </div>
+          ))
+        }
       </div>
 
-      <a href={site.whatsapp} class={`${btnOrange} mt-3`}>WhatsApp Us Now</a>
+      <div class="relative flex flex-wrap justify-center gap-3">
+        <a href={site.whatsapp} class={btnOrange}>WhatsApp Us Now</a>
+        <a href={`tel:${site.phone}`} class={btnWhite}>Call Now</a>
+      </div>
     </div>
-
-    <form id="quote-form" class="rounded-[14px] bg-grey p-8">
-      <div class="mb-0 grid gap-3.5 sm:grid-cols-2">
-        <input class={inputClass} type="text" name="name" placeholder="Full name" required />
-        <input class={inputClass} type="tel" name="phone" placeholder="Phone number" required />
-      </div>
-      <input class={inputClass} type="email" name="email" placeholder="Email address" required />
-      <select class={inputClass} name="service" required>
-        <option value="">Select service</option>
-        <option>UPS Supply</option>
-        <option>UPS Installation</option>
-        <option>UPS Maintenance / AMC</option>
-        <option>Battery Replacement</option>
-        <option>Emergency Repair</option>
-        <option>Other</option>
-      </select>
-      <textarea class={`${inputClass} min-h-[100px] resize-y`} name="message" placeholder="Tell us about your UPS or facility..."></textarea>
-      <button type="submit" class={`${btnOrange} rounded-md py-[13px]`}>Request Free Quote</button>
-      <p class="form-msg mt-2.5 hidden text-[13.5px] text-[#2f8f5b]">
-        Thanks — this is a demo form. Connect it to your CRM or email to go live.
-      </p>
-    </form>
   </div>
 </section>
-
-<script>
-  const form = document.getElementById('quote-form') as HTMLFormElement | null;
-  form?.addEventListener('submit', (event) => {
-    event.preventDefault();
-    const msg = form.querySelector('.form-msg') as HTMLElement | null;
-    if (msg) msg.classList.remove('hidden');
-  });
-</script>

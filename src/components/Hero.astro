@@ -1,16 +1,18 @@
 ---
 import { site } from '../data/site';
 
+export const heroImageUrl = 'https://images.unsplash.com/photo-1742491387035-f658e8a2b7f4?fm=jpg&q=80&w=1800&auto=format&fit=crop';
+
 const btn =
   'inline-flex items-center justify-center gap-2 rounded-lg px-[30px] py-[15px] text-[15px] font-semibold whitespace-nowrap transition-all duration-200';
-const btnOrange = `${btn} bg-orange text-white shadow-(--shadow-orange) hover:bg-orange-hover hover:-translate-y-px hover:shadow-(--shadow-orange-lg)`;
-const btnWhite = `${btn} bg-white text-navy`;
+const btnOrange = `${btn} btn-orange`;
+const btnWhite = `${btn} btn-white`;
 ---
 
 <section
   id="top"
   class="relative overflow-hidden bg-navy-deep bg-cover bg-[center_35%] bg-no-repeat pt-[100px] text-white"
-  style={`background-image: linear-gradient(180deg, rgba(0,20,40,0.82) 0%, rgba(0,42,84,0.90) 55%, #003366 100%), url('https://images.unsplash.com/photo-1742491387035-f658e8a2b7f4?fm=jpg&q=80&w=1800&auto=format&fit=crop');`}
+  style={`background-image: linear-gradient(180deg, rgba(0,20,40,0.82) 0%, rgba(0,42,84,0.90) 55%, #003366 100%), url('${heroImageUrl}');`}
 >
   <div
     class="pointer-events-none absolute inset-0"
@@ -37,7 +39,8 @@ const btnWhite = `${btn} bg-white text-navy`;
       <span class="absolute top-1.5 right-0 font-mono text-[11px] tracking-[0.08em] text-[#3fd39a] uppercase">Zero downtime</span>
       <svg class="h-full w-full" viewBox="0 0 900 150" preserveAspectRatio="none" aria-hidden="true">
         <path
-          class="fill-none stroke-orange stroke-[2.5] [stroke-linecap:round] drop-shadow-[0_0_6px_rgba(255,107,0,0.5)]"
+          class="hero-wave-path fill-none stroke-orange stroke-[2.5] [stroke-linecap:round] drop-shadow-[0_0_6px_rgba(255,107,0,0.5)]"
+          pathLength="1"
           d="M0,75 C20,20 40,130 60,75 C80,20 100,130 120,75 C140,20 160,130 180,75 C200,20 220,130 240,75 C260,20 280,130 300,75 C320,45 340,75 360,75 C420,75 460,75 900,75"
         >
         </path>
@@ -70,6 +73,6 @@ const btnWhite = `${btn} bg-white text-navy`;
 </section>
 
 <div class="bg-orange px-5 py-3 text-center font-mono text-[13px] tracking-[0.03em] text-white">
-  🌍 EXPORT CUSTOMERS WELCOME — we also supply and install UPS &amp; battery systems for projects outside the UAE.
+  🌍 EXPORT CUSTOMERS WELCOME — we also supply and install UPS &amp; battery systems for projects across the UAE and MENA region.
   <a href="#contact" class="text-white underline">Talk to us about your country →</a>
 </div>

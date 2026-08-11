@@ -19,13 +19,24 @@ const capabilities = [
   'Power Quality Analysis',
   'UPS Rental Support',
 ];
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: site.url },
+    { '@type': 'ListItem', position: 2, name: 'About Us', item: `${site.url}/about` },
+  ],
+};
 ---
 
 <BaseLayout
-  title={`About Us | ${site.shortName} — UPS Specialists Dubai`}
-  description="Emirates Critical Power LLC is an independent UPS engineering company in Dubai. We supply, install, commission and maintain UPS and battery systems across the UAE — brand-agnostic, 24/7 support."
+  title={`About Us | UPS Specialists Dubai — ${site.shortName}`}
+  description="Independent UPS engineering company in Dubai. We supply, install, commission and maintain UPS and battery systems UAE-wide, brand-agnostic, 24/7."
 >
   <Header />
+
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumbSchema)} />
 
   <section class="bg-navy-deep py-20 text-white">
     <div class="mx-auto max-w-[800px] px-6 text-center">
@@ -41,29 +52,36 @@ const capabilities = [
 
   <section class="bg-white py-[88px]">
     <div class="mx-auto max-w-[800px] px-6">
-      <h2 class="mb-4 text-[clamp(24px,3vw,36px)] text-navy">Who we are</h2>
-      <p class="mb-4 text-[15.5px] text-steel">
-        {site.name} is a UAE-based engineering company specializing in complete UPS and battery solutions — from single-phase office UPS to modular, N+1 systems protecting data centers. We supply, install, commission and maintain UPS across the Emirates.
-      </p>
-      <p class="mb-4 text-[15.5px] text-steel">
-        As an independent partner, we service multiple brands rather than pushing a single manufacturer's agenda. That means the right recommendation for your load, site and budget — not a locked-in product line.
-      </p>
-      <p class="text-[15.5px] text-steel">
-        For export customers, we also arrange supply and on-site installation of UPS and battery systems outside the UAE. Share your project location and load requirements and we'll scope the work.
-      </p>
+      <div data-reveal>
+        <h2 class="mb-4 text-[clamp(24px,3vw,36px)] text-navy">Who we are</h2>
+        <p class="mb-4 text-[15.5px] text-steel">
+          {site.name} is a UAE-based engineering company specializing in complete UPS and battery solutions — from single-phase office UPS to modular, N+1 systems protecting data centers. We supply, install, commission and maintain UPS across the Emirates.
+        </p>
+        <p class="mb-4 text-[15.5px] text-steel">
+          As an independent partner, we service multiple brands rather than pushing a single manufacturer's agenda. That means the right recommendation for your load, site and budget — not a locked-in product line.
+        </p>
+        <p class="text-[15.5px] text-steel">
+          For export customers, we also arrange supply and on-site installation of UPS and battery systems across the wider MENA region. Share your project location and load requirements and we'll scope the work.
+        </p>
+      </div>
 
-      <h2 class="mt-14 mb-4 text-[clamp(24px,3vw,36px)] text-navy">What we deliver</h2>
-      <ul class="grid list-none gap-x-[18px] gap-y-2.5 sm:grid-cols-2">
-        {
-          capabilities.map((item) => (
-            <li class="relative pl-5 text-[14.5px] text-navy-deep before:absolute before:top-2 before:left-0 before:h-[7px] before:w-[7px] before:rotate-45 before:bg-orange before:content-['']">
-              {item}
-            </li>
-          ))
-        }
-      </ul>
+      <div class="mt-14" data-reveal>
+        <h2 class="mb-4 text-[clamp(24px,3vw,36px)] text-navy">What we deliver</h2>
+        <ul class="grid list-none gap-x-[18px] gap-y-2.5 sm:grid-cols-2">
+          {
+            capabilities.map((item) => (
+              <li class="relative pl-5 text-[14.5px] text-navy-deep before:absolute before:top-2 before:left-0 before:h-[7px] before:w-[7px] before:rotate-45 before:bg-orange before:content-['']">
+                {item}
+              </li>
+            ))
+          }
+        </ul>
+        <p class="mt-6 text-[14.5px] text-steel">
+          See the <a class="text-orange hover:underline" href="/services">full service breakdown</a>, or if you're a dealer, reseller or need <a class="text-orange hover:underline" href="/partners">freelance technician support</a>, we cover that too.
+        </p>
+      </div>
 
-      <div class="mt-14 rounded-[14px] bg-grey p-8 md:p-10">
+      <div class="mt-14 rounded-[14px] bg-grey p-8 md:p-10" data-reveal>
         <h2 class="mb-3 text-[22px] text-navy">Based in Dubai</h2>
         <p class="text-[15px] text-steel">
           {site.address}<br />
@@ -72,7 +90,7 @@ const capabilities = [
         </p>
         <a
           href="/#contact"
-          class="mt-6 inline-flex items-center justify-center rounded-md bg-orange px-[22px] py-[11px] text-sm font-semibold text-white shadow-(--shadow-orange) hover:bg-orange-hover"
+          class="btn-orange mt-6 inline-flex items-center justify-center rounded-md px-[22px] py-[11px] text-sm font-semibold"
         >
           Get a free quote
         </a>

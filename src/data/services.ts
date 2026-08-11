@@ -40,4 +40,25 @@ export const services = [
     desc: 'Factory and site acceptance testing before go-live.',
     items: ['FAT & SAT', 'Load bank testing', 'Customer training'],
   },
+  {
+    num: '07',
+    title: 'Site Inspection',
+    desc: 'Pre-installation and pre-AMC surveys that catch problems before they cost you.',
+    items: ['Load & electrical review', 'Cable & bypass arrangement check', 'Battery cabinet & access planning'],
+  },
+] as const;
+
+export const engagementModels = [
+  {
+    title: 'Full Turnkey',
+    desc: 'We supply the UPS and batteries, then install, test and commission — one contract, one point of contact.',
+  },
+  {
+    title: 'You Supply — We Install',
+    desc: "Already bought a UPS or batteries from another supplier or dealer? Our engineers handle installation, testing and commissioning to full commissioning standard.",
+  },
+  {
+    title: 'Service & Replacement Only',
+    desc: 'Need a battery swap, a health check or a one-off repair on an existing system? We take the job without a supply contract attached.',
+  },
 ] as const;

@@ -1,0 +1,140 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppFloat from '../components/WhatsAppFloat.astro';
+import { site } from '../data/site';
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: site.url },
+    { '@type': 'ListItem', position: 2, name: 'Partners', item: `${site.url}/partners` },
+  ],
+};
+
+const btn =
+  'inline-flex items-center justify-center rounded-md px-[22px] py-[11px] text-sm font-semibold whitespace-nowrap transition-all duration-200';
+const btnOrange = `${btn} btn-orange`;
+const btnWhite = `${btn} btn-white`;
+
+const dealerPoints = [
+  'On-ground installation, testing & commissioning under your project',
+  'Documented FAT/SAT reports handed to you and your customer',
+  'Optional white-label technical support — your brand, our engineers',
+  'AMC handover and ongoing support after go-live',
+];
+
+const freelancePoints = [
+  'UPS & battery installation, one-off or recurring',
+  'Testing, commissioning and site inspection',
+  'Battery replacement and troubleshooting',
+  'Emergency and after-hours callouts',
+];
+
+const steps = [
+  { step: '01', title: 'Share the scope', body: 'Send us the site, load, brand and timeline — yours or your customer’s.' },
+  { step: '02', title: 'Get a quote', body: 'A fixed price for the technical work, with no supply obligation unless you want one.' },
+  { step: '03', title: 'We do the site work', body: 'Certified engineers handle installation, testing and commissioning to standard.' },
+  { step: '04', title: 'You get the paperwork', body: 'Commissioning reports and documentation, ready to hand to your customer.' },
+];
+---
+
+<BaseLayout
+  title={`Freelance UPS Technician & Dealer Support | ${site.shortName}`}
+  description="On-ground UPS installation and commissioning support for dealers, resellers and contractors, plus freelance UPS technician support across the UAE."
+>
+  <Header />
+
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumbSchema)} />
+
+  <section class="bg-navy-deep py-20 text-white">
+    <div class="mx-auto max-w-[800px] px-6 text-center">
+      <div class="mb-3.5 flex items-center justify-center gap-2.5 font-mono text-xs tracking-[0.14em] text-orange uppercase before:inline-block before:h-0.5 before:w-[22px] before:bg-orange">
+        Partner &amp; project support
+      </div>
+      <h1 class="text-[clamp(32px,4vw,48px)]">Technical manpower for dealers, contractors &amp; one-off projects</h1>
+      <p class="mt-4 text-[16px] text-white/75">
+        You sell it or you own it — we handle the installation, testing and commissioning.
+      </p>
+    </div>
+  </section>
+
+  <section class="bg-white py-[88px]">
+    <div class="mx-auto max-w-[1200px] px-6">
+      <div class="grid gap-[60px] md:grid-cols-2">
+        <div data-reveal>
+          <h2 class="mb-3.5 text-[24px] text-navy">Dealers, distributors &amp; resellers</h2>
+          <p class="mb-5 text-[15px] text-steel">
+            If you supply UPS or battery systems but don't run your own installation team, we're your on-ground execution partner. You keep the customer relationship — we deliver the engineering.
+          </p>
+          <ul class="list-none">
+            {
+              dealerPoints.map((item) => (
+                <li class="relative mb-2.5 pl-5 text-[14.5px] text-navy-deep before:absolute before:top-2 before:left-0 before:h-[7px] before:w-[7px] before:rotate-45 before:bg-orange before:content-['']">
+                  {item}
+                </li>
+              ))
+            }
+          </ul>
+          <p class="mt-4 text-[13.5px] text-steel">
+            See our <a class="text-orange hover:underline" href="/services">full service list</a> for what your customers can order.
+          </p>
+        </div>
+        <div data-reveal style="--i: 1">
+          <h2 class="mb-3.5 text-[24px] text-navy">Freelance &amp; project-based technician support</h2>
+          <p class="mb-5 text-[15px] text-steel">
+            For contractors, system integrators and companies that need certified UPS hands for a single project or an occasional callout — without hiring a full-time technician or signing a long-term contract.
+          </p>
+          <ul class="list-none">
+            {
+              freelancePoints.map((item) => (
+                <li class="relative mb-2.5 pl-5 text-[14.5px] text-navy-deep before:absolute before:top-2 before:left-0 before:h-[7px] before:w-[7px] before:rotate-45 before:bg-orange before:content-['']">
+                  {item}
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-grey py-[88px]">
+    <div class="mx-auto max-w-[1200px] px-6">
+      <div class="mx-auto mb-12 max-w-[640px] text-center" data-reveal>
+        <h2 class="text-[clamp(24px,3vw,34px)] text-navy">How it works</h2>
+      </div>
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {
+          steps.map((item, i) => (
+            <div class="card-hover rounded-xl border border-line bg-white px-6 py-[26px]" data-reveal style={`--i: ${i}`}>
+              <span class="mb-3 block font-mono text-xs text-orange">{item.step}</span>
+              <h3 class="mb-2 text-[16px] text-navy">{item.title}</h3>
+              <p class="text-[13.5px] text-steel">{item.body}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white py-[88px]">
+    <div class="mx-auto max-w-[1200px] px-6">
+      <div class="rounded-2xl bg-linear-to-br from-navy to-navy-deep p-10 text-center text-white" data-reveal>
+        <h2 class="mb-3 text-[24px]">Have a project or a customer order?</h2>
+        <p class="mx-auto mb-6 max-w-[520px] text-[15px] text-white/80">
+          Tell us the scope — one-off installation, an ongoing dealer arrangement, or a single freelance callout — and we'll come back with a fixed quote. Coverage across the UAE and the wider MENA region, subject to project requirements.
+        </p>
+        <div class="flex flex-wrap justify-center gap-3">
+          <a href="/#contact" class={btnOrange}>Request a quote</a>
+          <a href={site.whatsapp} class={btnWhite}>WhatsApp us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+  <WhatsAppFloat />
+</BaseLayout>

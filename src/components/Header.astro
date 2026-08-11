@@ -1,35 +1,193 @@
 ---
+import { Image } from 'astro:assets';
 import { site } from '../data/site';
+import logo from '../assets/logo.png';
 
 const btn =
   'inline-flex items-center justify-center gap-2 rounded-md px-[22px] py-[11px] text-sm font-semibold whitespace-nowrap transition-all duration-200';
-const btnOrange = `${btn} bg-orange text-white shadow-(--shadow-orange) hover:bg-orange-hover hover:-translate-y-px hover:shadow-(--shadow-orange-lg)`;
-const btnOutline = `${btn} border-[1.5px] border-navy bg-transparent text-navy hover:bg-navy hover:text-white px-4 py-2.5`;
+const btnOrange = `${btn} btn-orange`;
+const btnOutline = `${btn} btn-outline px-4 py-2.5`;
+
+const ctaBtn =
+  'inline-flex flex-1 items-center justify-center gap-2 rounded-md px-6 py-3.5 text-base font-semibold whitespace-nowrap transition-all duration-200';
+
+const navLinks = [
+  { href: '/services', label: 'Services' },
+  { href: '/about', label: 'About' },
+  { href: '/partners', label: 'Partners' },
+  { href: '/#industries', label: 'Industries' },
+  { href: '/#faq', label: 'FAQ' },
+  { href: '/#contact', label: 'Contact' },
+];
 ---
 
-<header class="sticky top-0 z-100 border-b border-line bg-white/92 backdrop-blur-[10px]">
+<header class="site-header sticky top-0 z-100 border-b border-line bg-white/92 backdrop-blur-[10px]">
   <nav class="mx-auto flex max-w-[1200px] items-center justify-between px-6 py-4">
     <a href="/" class="flex items-center gap-2.5 font-display text-lg font-bold text-navy">
-      <img
-        class="h-11 w-11 shrink-0 rounded-md object-contain"
-        src="/logo.png"
-        alt={`${site.name} logo`}
-        width="44"
-        height="44"
-      />
+      <Image class="h-11 w-11 shrink-0 rounded-md object-contain" src={logo} alt={`${site.name} logo`} width={132} height={132} loading="eager" />
       {site.shortName}
     </a>
     <div class="hidden gap-7 text-sm font-medium md:flex">
-      <a href="/services" class="py-1 text-navy hover:text-orange">Services</a>
-      <a href="/about" class="py-1 text-navy hover:text-orange">About</a>
-      <a href="/#industries" class="py-1 text-navy hover:text-orange">Industries</a>
-      <a href="/#faq" class="py-1 text-navy hover:text-orange">FAQ</a>
-      <a href="/#contact" class="py-1 text-navy hover:text-orange">Contact</a>
+      {
+        navLinks.map((link) => (
+          <a href={link.href} class="py-1 text-navy hover:text-orange">
+            {link.label}
+          </a>
+        ))
+      }
     </div>
     <div class="hidden items-center gap-3 sm:flex">
       <a href={`tel:${site.phone}`} class={btnOutline}>Call Now</a>
       <a href={site.whatsapp} class={btnOrange}>WhatsApp</a>
     </div>
-    <button class="bg-transparent text-2xl text-navy md:hidden" aria-label="Menu" type="button">☰</button>
+    <button
+      id="mobile-nav-toggle"
+      class="hamburger flex h-11 w-11 items-center justify-center md:hidden"
+      aria-label="Open menu"
+      aria-expanded="false"
+      aria-controls="mobile-nav"
+      type="button"
+    >
+      <span class="relative block h-[16px] w-[22px]">
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+      </span>
+    </button>
   </nav>
 </header>
+
+<div
+  id="mobile-nav"
+  class="mobile-nav fixed inset-0 z-300 flex flex-col bg-navy-deep text-white md:hidden"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Mobile navigation"
+  hidden
+  style="background-image: linear-gradient(rgba(255,255,255,0.045) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.045) 1px, transparent 1px); background-size: 32px 32px;"
+>
+  <div class="flex items-center justify-between px-6 py-4">
+    <span class="flex items-center gap-2.5 font-display text-lg font-bold text-white">
+      <Image class="h-11 w-11 shrink-0 rounded-md object-contain" src={logo} alt={`${site.name} logo`} width={132} height={132} />
+      {site.shortName}
+    </span>
+    <button
+      id="mobile-nav-close"
+      class="flex h-11 w-11 items-center justify-center text-white"
+      aria-label="Close menu"
+      type="button"
+    >
+      <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <path d="M6 6l12 12M18 6L6 18"></path>
+      </svg>
+    </button>
+  </div>
+
+  <svg class="block h-0.5 w-full" viewBox="0 0 400 2" preserveAspectRatio="none" aria-hidden="true">
+    <path class="nav-sweep-path" d="M0,1 L400,1" stroke="#FF6B00" stroke-width="2" fill="none"></path>
+  </svg>
+
+  <ul class="flex flex-1 list-none flex-col justify-center gap-1 px-6">
+    {
+      navLinks.map((link, i) => (
+        <li>
+          <a
+            href={link.href}
+            class="mobile-nav-link flex items-baseline gap-4 border-b border-white/10 py-4"
+            style={`--i: ${i}`}
+          >
+            <span class="font-mono text-sm text-orange">{String(i + 1).padStart(2, '0')}</span>
+            <span class="font-display text-2xl">{link.label}</span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+
+  <div class="flex flex-wrap gap-3 px-6 pb-8">
+    <a href={site.whatsapp} class={`${ctaBtn} btn-orange mobile-nav-cta`}>WhatsApp</a>
+    <a href={`tel:${site.phone}`} class={`${ctaBtn} btn-white mobile-nav-cta`}>Call Now</a>
+  </div>
+</div>
+
+<script>
+  const toggleBtn = document.getElementById('mobile-nav-toggle');
+  const closeBtn = document.getElementById('mobile-nav-close');
+  const panel = document.getElementById('mobile-nav');
+  const body = document.body;
+
+  if (toggleBtn && closeBtn && panel) {
+    const getFocusable = () => Array.from(panel.querySelectorAll<HTMLElement>('a[href], button:not([disabled])'));
+
+    const onKeydown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        closeNav();
+        return;
+      }
+      if (event.key !== 'Tab') return;
+      const focusable = getFocusable();
+      if (focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+
+    function openNav() {
+      panel!.hidden = false;
+      body.classList.add('nav-open');
+      toggleBtn!.setAttribute('aria-expanded', 'true');
+      toggleBtn!.setAttribute('aria-label', 'Close menu');
+      requestAnimationFrame(() => panel!.classList.add('is-open'));
+      document.addEventListener('keydown', onKeydown);
+      closeBtn!.focus();
+    }
+
+    function closeNav() {
+      panel!.classList.remove('is-open');
+      body.classList.remove('nav-open');
+      toggleBtn!.setAttribute('aria-expanded', 'false');
+      toggleBtn!.setAttribute('aria-label', 'Open menu');
+      document.removeEventListener('keydown', onKeydown);
+      toggleBtn!.focus();
+      window.setTimeout(() => {
+        if (!panel!.classList.contains('is-open')) panel!.hidden = true;
+      }, 500);
+    }
+
+    toggleBtn.addEventListener('click', () => {
+      if (panel.classList.contains('is-open')) closeNav();
+      else openNav();
+    });
+    closeBtn.addEventListener('click', closeNav);
+    panel.querySelectorAll('.mobile-nav-link, .mobile-nav-cta').forEach((el) => {
+      el.addEventListener('click', closeNav);
+    });
+  }
+
+  const siteHeader = document.querySelector('.site-header');
+  if (siteHeader) {
+    let ticking = false;
+    const applyScrollState = () => {
+      siteHeader.classList.toggle('scrolled', window.scrollY > 40);
+      ticking = false;
+    };
+    applyScrollState();
+    window.addEventListener(
+      'scroll',
+      () => {
+        if (!ticking) {
+          ticking = true;
+          requestAnimationFrame(applyScrollState);
+        }
+      },
+      { passive: true }
+    );
+  }
+</script>

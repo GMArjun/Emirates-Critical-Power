@@ -1,10 +1,23 @@
 ---
 import { faqs } from '../data/faqs';
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map(([question, answer]) => ({
+    '@type': 'Question',
+    name: question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: answer.replace(/<[^>]+>/g, ''),
+    },
+  })),
+};
 ---
 
 <section id="faq" class="bg-white py-[88px]">
   <div class="mx-auto max-w-[820px] px-6">
-    <div class="mx-auto mb-12 max-w-[640px] text-center">
+    <div class="mx-auto mb-12 max-w-[640px] text-center" data-reveal>
       <div class="mb-3.5 flex items-center justify-center gap-2.5 font-mono text-xs tracking-[0.14em] text-orange uppercase before:inline-block before:h-0.5 before:w-[22px] before:bg-orange">
         Frequently asked
       </div>
@@ -19,7 +32,7 @@ import { faqs } from '../data/faqs';
               <span class="plus ml-4 shrink-0 font-mono text-lg text-orange transition-transform duration-200">+</span>
             </div>
             <div class="faq-a max-h-0 overflow-hidden text-[14.5px] text-steel transition-[max-height] duration-250 ease-in-out">
-              <p class="px-1 pb-5">{answer}</p>
+              <p class="px-1 pb-5 [&_a]:text-orange [&_a]:hover:underline" set:html={answer} />
             </div>
           </div>
         ))
@@ -27,6 +40,8 @@ import { faqs } from '../data/faqs';
     </div>
   </div>
 </section>
+
+<script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
 
 <script>
   document.querySelectorAll('.faq-item').forEach((item) => {
