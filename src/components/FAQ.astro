@@ -27,12 +27,12 @@ const faqSchema = {
       {
         faqs.map(([question, answer]) => (
           <div class="faq-item border-b border-line">
-            <div class="faq-q flex cursor-pointer items-center justify-between py-5 px-1 text-[15.5px] font-semibold text-navy">
+            <div class="faq-q flex cursor-pointer items-center justify-between py-4 px-3 text-[15.5px] font-semibold text-navy">
               <span>{question}</span>
               <span class="plus ml-4 shrink-0 font-mono text-lg text-orange-ink transition-transform duration-200">+</span>
             </div>
             <div class="faq-a max-h-0 overflow-hidden text-[14.5px] text-steel transition-[max-height] duration-250 ease-in-out">
-              <p class="px-1 pb-5 [&_a]:text-orange-ink [&_a]:hover:underline" set:html={answer} />
+              <p class="px-3 pb-5 pt-5 [&_a]:text-orange-ink [&_a]:hover:underline" set:html={answer} />
             </div>
           </div>
         ))
