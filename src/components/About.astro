@@ -1,4 +1,13 @@
 ---
+import { getImage } from 'astro:assets';
+
+const aboutPanelImage = await getImage({
+  src: 'https://images.unsplash.com/photo-1742899273038-67ff67477663?fm=jpg&q=70&w=900&auto=format&fit=crop',
+  inferSize: true,
+  width: 900,
+  format: 'webp',
+});
+
 const capabilities = [
   'UPS Supply & Installation',
   'UPS Testing & Commissioning',
@@ -28,7 +37,7 @@ const industries = [
 <section id="about" class="bg-white py-[88px]">
   <div class="mx-auto grid max-w-[1200px] items-start gap-[60px] px-6 md:grid-cols-2">
     <div data-reveal>
-      <div class="mb-3.5 flex items-center gap-2.5 font-mono text-xs tracking-[0.14em] text-orange uppercase before:inline-block before:h-0.5 before:w-[22px] before:bg-orange">
+      <div class="mb-3.5 flex items-center gap-2.5 font-mono text-xs tracking-[0.14em] text-orange-ink uppercase before:inline-block before:h-0.5 before:w-[22px] before:bg-orange">
         About the company
       </div>
       <h2 class="text-[clamp(26px,3.4vw,40px)] text-navy">Independent UPS engineering, built for critical facilities</h2>
@@ -51,12 +60,12 @@ const industries = [
           ))
         }
       </div>
-      <a href="/about" class="mt-6 inline-block font-semibold text-orange hover:underline">Learn more about us →</a>
+      <a href="/about" class="mt-6 inline-block font-semibold text-orange-ink hover:underline">Learn more about us →</a>
     </div>
     <div
       class="relative overflow-hidden rounded-[14px] p-9 text-white after:absolute after:right-[-40px] after:bottom-[-40px] after:h-[180px] after:w-[180px] after:rounded-full after:bg-[radial-gradient(circle,rgba(255,107,0,0.25),transparent_70%)] after:content-['']"
       data-reveal
-      style="--i: 1; background: linear-gradient(160deg, rgba(0,20,40,0.88), rgba(0,51,102,0.93)), url('https://images.unsplash.com/photo-1742899273038-67ff67477663?fm=jpg&q=70&w=900&auto=format&fit=crop') center/cover;"
+      style={`--i: 1; background: linear-gradient(160deg, rgba(0,20,40,0.88), rgba(0,51,102,0.93)), url('${aboutPanelImage.src}') center/cover;`}
     >
       <h3 class="relative mb-4 text-xl">Why facilities choose an independent UPS partner</h3>
       <div class="relative flex justify-between border-b border-white/14 py-2.5 font-mono text-[13.5px]">

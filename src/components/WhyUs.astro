@@ -14,7 +14,7 @@ const reasons = [
 <section class="bg-grey py-[88px]">
   <div class="mx-auto max-w-[1200px] px-6">
     <div class="mx-auto mb-12 max-w-[640px] text-center" data-reveal>
-      <div class="mb-3.5 flex items-center justify-center gap-2.5 font-mono text-xs tracking-[0.14em] text-orange uppercase before:inline-block before:h-0.5 before:w-[22px] before:bg-orange">
+      <div class="mb-3.5 flex items-center justify-center gap-2.5 font-mono text-xs tracking-[0.14em] text-orange-ink uppercase before:inline-block before:h-0.5 before:w-[22px] before:bg-orange">
         Why Emirates Critical Power
       </div>
       <h2 class="text-[clamp(26px,3.4vw,40px)] text-navy">Built for facilities that can't afford downtime</h2>
@@ -23,7 +23,7 @@ const reasons = [
       {
         reasons.map((item, i) => (
           <div class="border-t-2 border-orange px-1 py-6" data-reveal style={`--i: ${i}`}>
-            <h4 class="mb-1.5 text-base text-navy">{item.title}</h4>
+            <h3 class="mb-1.5 text-base text-navy">{item.title}</h3>
             <p class="text-[13.5px] text-steel">{item.body}</p>
           </div>
         ))

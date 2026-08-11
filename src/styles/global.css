@@ -5,6 +5,10 @@
   --color-navy-deep: #001b33;
   --color-orange: #ff6b00;
   --color-orange-hover: #e35f00;
+  /* Accessible variant of --color-orange: passes WCAG AA (4.5:1+) as text/UI on white or grey.
+     --color-orange itself only passes on dark navy backgrounds (~6:1) — use -ink there instead. */
+  --color-orange-ink: #ba4800;
+  --color-orange-ink-hover: #a34000;
   --color-grey: #f2f4f7;
   --color-steel: #1f3a5f;
   --color-line: rgb(0 51 102 / 0.12);
@@ -117,12 +121,12 @@
 
 @layer components {
   .btn-orange {
-    background: var(--color-orange);
+    background: var(--color-orange-ink);
     color: #fff;
     box-shadow: var(--shadow-orange);
   }
   .btn-orange:hover {
-    background: var(--color-orange-hover);
+    background: var(--color-orange-ink-hover);
     transform: translateY(-1px);
     box-shadow: var(--shadow-orange-lg);
   }
@@ -160,7 +164,7 @@
   .btn-orange:focus-visible,
   .btn-outline:focus-visible,
   .btn-white:focus-visible {
-    outline: 2px solid var(--color-orange);
+    outline: 2px solid var(--color-orange-ink);
     outline-offset: 2px;
   }
 }

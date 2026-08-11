@@ -5,7 +5,7 @@ import { services } from '../data/services';
 <section class="bg-grey py-[88px]" id="services">
   <div class="mx-auto max-w-[1200px] px-6">
     <div class="mx-auto mb-12 max-w-[640px] text-center" data-reveal>
-      <div class="mb-3.5 flex items-center justify-center gap-2.5 font-mono text-xs tracking-[0.14em] text-orange uppercase before:inline-block before:h-0.5 before:w-[22px] before:bg-orange">
+      <div class="mb-3.5 flex items-center justify-center gap-2.5 font-mono text-xs tracking-[0.14em] text-orange-ink uppercase before:inline-block before:h-0.5 before:w-[22px] before:bg-orange">
         What we do
       </div>
       <h2 class="text-[clamp(26px,3.4vw,40px)] text-navy">Full lifecycle UPS &amp; battery services</h2>
@@ -23,7 +23,7 @@ import { services } from '../data/services';
             data-reveal
             style={`--i: ${i}`}
           >
-            <span class="mb-3.5 block font-mono text-xs text-orange">{service.num}</span>
+            <span class="mb-3.5 block font-mono text-xs text-orange-ink">{service.num}</span>
             <h3 class="mb-2.5 text-[19px] text-navy">{service.title}</h3>
             <p class="mb-4 text-sm text-steel">{service.desc}</p>
             <ul class="list-none text-[13.5px] text-navy-deep">
@@ -36,7 +36,7 @@ import { services } from '../data/services';
       }
     </div>
     <div class="mt-10 text-center">
-      <a href="/services" class="font-semibold text-orange hover:underline">View all services &amp; how we work →</a>
+      <a href="/services" class="font-semibold text-orange-ink hover:underline">View all services &amp; how we work →</a>
     </div>
   </div>
 </section>

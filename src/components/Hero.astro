@@ -1,7 +1,6 @@
 ---
 import { site } from '../data/site';
-
-export const heroImageUrl = 'https://images.unsplash.com/photo-1742491387035-f658e8a2b7f4?fm=jpg&q=80&w=1800&auto=format&fit=crop';
+import { heroImageUrl } from '../lib/heroImage';
 
 const btn =
   'inline-flex items-center justify-center gap-2 rounded-lg px-[30px] py-[15px] text-[15px] font-semibold whitespace-nowrap transition-all duration-200';
@@ -69,6 +68,7 @@ const btnWhite = `${btn} btn-white`;
         <span class="font-mono text-xs tracking-[0.05em] text-white/55">Dubai response*</span>
       </div>
     </div>
+    <p class="pb-6 text-center font-mono text-[11px] text-white/40">*Target response time for emergency callouts within Dubai, subject to traffic and location.</p>
   </div>
 </section>
 
