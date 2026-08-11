@@ -4,7 +4,8 @@ import { site } from '../data/site';
 
 <a
   href={site.whatsapp}
-  class="wa-float animate-wa-pulse fixed right-6 bottom-6 z-200 flex h-[58px] w-[58px] items-center justify-center rounded-full bg-wa shadow-[0_8px_24px_rgba(37,211,102,0.45)] transition-opacity duration-200"
+  id="wa-float"
+  class="wa-float animate-wa-pulse fixed right-6 bottom-6 z-200 flex h-[58px] w-[58px] items-center justify-center rounded-full bg-wa shadow-[0_8px_24px_rgba(37,211,102,0.45)]"
   aria-label="Chat on WhatsApp"
 >
   <svg class="h-7 w-7 fill-white" viewBox="0 0 24 24" aria-hidden="true">
@@ -12,3 +13,18 @@ import { site } from '../data/site';
     <path d="M12 2a10 10 0 00-8.6 15L2 22l5.1-1.3A10 10 0 1012 2zm0 18.2a8.2 8.2 0 01-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1112 20.2z"></path>
   </svg>
 </a>
+
+<script>
+  const waFloat = document.getElementById('wa-float');
+  if (waFloat) {
+    let scrollTimeout: ReturnType<typeof setTimeout> | undefined;
+    const onScroll = () => {
+      waFloat.classList.add('is-scrolling');
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        waFloat.classList.remove('is-scrolling');
+      }, 400);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
+</script>

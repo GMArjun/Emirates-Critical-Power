@@ -18,15 +18,15 @@ export const services = [
   },
   {
     num: '03',
-    title: 'UPS Maintenance',
-    desc: 'Preventive and corrective care that keeps uptime intact.',
-    items: ['Preventive & corrective maintenance', 'UPS health check', 'Emergency repair, 24/7'],
+    title: 'UPS Service & AMC',
+    desc: 'Preventive maintenance, troubleshooting and Annual Maintenance Contracts that keep uptime intact.',
+    items: ['Preventive & corrective maintenance', 'Troubleshooting & emergency support, 24/7', 'Annual Maintenance Contracts (AMC)'],
   },
   {
     num: '04',
-    title: 'Battery Replacement',
-    desc: 'VRLA, lithium-ion and NiCd battery banks, sized and installed.',
-    items: ['Battery bank installation', 'Capacity testing', 'Responsible disposal'],
+    title: 'Battery Installation & Replacement',
+    desc: 'New battery installation and VRLA, lithium-ion battery bank replacement, sized and commissioned.',
+    items: ['New battery installation & connection', 'Battery replacement & capacity testing', 'Responsible disposal'],
   },
   {
     num: '05',
@@ -36,14 +36,14 @@ export const services = [
   },
   {
     num: '06',
-    title: 'UPS Commissioning',
-    desc: 'Factory and site acceptance testing before go-live.',
-    items: ['FAT & SAT', 'Load bank testing', 'Customer training'],
+    title: 'Testing & Commissioning',
+    desc: 'System verification, load testing and functional checks before go-live.',
+    items: ['FAT & SAT', 'Load bank testing & functional checks', 'Customer training'],
   },
   {
     num: '07',
-    title: 'Site Inspection',
-    desc: 'Pre-installation and pre-AMC surveys that catch problems before they cost you.',
+    title: 'Site Visit & Site Survey',
+    desc: 'Site inspection and technical survey of existing UPS, batteries and electrical infrastructure.',
     items: ['Load & electrical review', 'Cable & bypass arrangement check', 'Battery cabinet & access planning'],
   },
 ] as const;
@@ -54,8 +54,8 @@ export const engagementModels = [
     desc: 'We supply the UPS and batteries, then install, test and commission — one contract, one point of contact.',
   },
   {
-    title: 'You Supply — We Install',
-    desc: "Already bought a UPS or batteries from another supplier or dealer? Our engineers handle installation, testing and commissioning to full commissioning standard.",
+    title: 'You Supply the UPS — We Support the Installation',
+    desc: "Already bought a UPS or batteries from another supplier or dealer? Our engineers handle installation, battery connection, testing and commissioning to full commissioning standard.",
   },
   {
     title: 'Service & Replacement Only',

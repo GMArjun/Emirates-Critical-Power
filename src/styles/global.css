@@ -147,6 +147,10 @@
       animation: none !important;
       stroke-dashoffset: 0 !important;
     }
+
+    .wa-float.is-scrolling {
+      transform: none !important;
+    }
   }
 }
 
@@ -270,6 +274,16 @@ body.nav-open {
 body.nav-open .wa-float {
   opacity: 0;
   pointer-events: none;
+}
+
+.wa-float {
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+.wa-float.is-scrolling {
+  opacity: 0.35;
+  transform: scale(0.85);
 }
 
 /* Scroll-reveal — progressive enhancement, safe with no JS / crawlers */
