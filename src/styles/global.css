@@ -121,12 +121,12 @@
 
 @layer components {
   .btn-orange {
-    background: var(--color-orange-ink);
-    color: #fff;
+    background: var(--color-orange);
+    color: var(--color-navy-deep);
     box-shadow: var(--shadow-orange);
   }
   .btn-orange:hover {
-    background: var(--color-orange-ink-hover);
+    background: var(--color-orange-hover);
     transform: translateY(-1px);
     box-shadow: var(--shadow-orange-lg);
   }
